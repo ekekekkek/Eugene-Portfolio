@@ -123,13 +123,13 @@ body {
   padding-top: 120px;
   background: #fff;
   padding-bottom: 0;
-  border: 1px solid red;
 }
 
 .hero-container {
   max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  margin: 0 5.5rem;
+  /* padding: 2rem 0 6rem 0; */
+  /* padding: 0 2rem; */
 }
 
 .hero-title {
@@ -230,7 +230,7 @@ body {
 /* Content Area */
 .work-content,
 .playground-content {
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
 }
 
 .work-item h3,
