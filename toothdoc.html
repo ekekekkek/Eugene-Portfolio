@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TheShaft - Columbia's Housing Info Platform | Eugene's Portfolio</title>
+  <title>ToothDoc - B2B Management Platform MVP | Eugene's Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,7 +96,7 @@
       line-height: 1.1;
       margin-bottom: 20px;
       color: #1e293b;
-      min-width: 1000px;
+      min-width: 950px;
     }
     
     .project-hero-text p {
@@ -123,7 +123,7 @@
     
     .project-meta {
       display: flex;
-      gap: 100px;
+      gap: 70px;
       flex-wrap: wrap;
       margin-bottom: 40px;
     }
@@ -131,7 +131,7 @@
     .meta-item {
       display: flex;
       align-items: flex-start;
-      gap: 8px;
+      gap: 5px;
       font-size: 0.9rem;
       color: #64748b;
     }
@@ -215,6 +215,20 @@
     }
 
     .project-image-section .project-video {
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .three-image-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .three-image-row .project-image {
       width: 100%;
       height: auto;
       border: 1px solid rgba(0, 0, 0, 0.1);
@@ -353,7 +367,7 @@
     }
 
     /* Section IDs for smooth scrolling */
-    #overview, #market-research, #solution, #final-designs, #lessons {
+    #overview, #value-proposition, #design-process, #design-exploration, #design-system, #final-designs, #lessons {
       scroll-margin-top: 100px;
     }
     
@@ -383,6 +397,11 @@
       .project-meta {
         flex-direction: column;
         gap: 10px;
+      }
+      
+      .three-image-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
       }
     }
   </style>
@@ -419,29 +438,32 @@
   <div class="project-layout">
     <!-- Sidebar Navigation -->
     <aside class="project-sidebar">
-                   <ul class="sidebar-nav">
-               <li class="sidebar-nav-item">
-                 <a href="index.html" class="sidebar-nav-link">← Back</a>
-               </li>
-               <li class="sidebar-nav-item">
-                 <a href="#overview" class="sidebar-nav-link">Overview</a>
-               </li>
-               <li class="sidebar-nav-item">
-                 <a href="#initial-findings" class="sidebar-nav-link">Initial Findings</a>
-               </li>
-               <li class="sidebar-nav-item">
-                 <a href="#roadblocks" class="sidebar-nav-link">Roadblock</a>
-               </li>
-               <li class="sidebar-nav-item">
-                 <a href="#design-exploration" class="sidebar-nav-link">Design Exploration</a>
-               </li>
-               <li class="sidebar-nav-item">
-                 <a href="#final-designs" class="sidebar-nav-link">Final Designs</a>
-               </li>
-               <li class="sidebar-nav-item">
-                 <a href="#takeaways" class="sidebar-nav-link">Takeaways</a>
-               </li>
-             </ul>
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item">
+          <a href="index.html" class="sidebar-nav-link">← Back</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#overview" class="sidebar-nav-link">Overview</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#value-proposition" class="sidebar-nav-link">Value Proposition</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#design-process" class="sidebar-nav-link">Design Process</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#design-exploration" class="sidebar-nav-link">Design Exploration</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#design-system" class="sidebar-nav-link">Design System</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#final-designs" class="sidebar-nav-link">Final Designs</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#lessons" class="sidebar-nav-link">Key Learnings</a>
+        </li>
+      </ul>
     </aside>
 
     <!-- Main Content -->
@@ -451,26 +473,22 @@
         <div class="project-hero-container">
           <div class="project-hero-content">
             <div class="project-hero-text">
-              <p>Columbia Daily Spectator | Jan ~ May 2025</p>
-              <h1>Updating the housing lottery calculator & dorm comparison tool</h1>
+              <p>ToothDoc | Jan ~ May 2025</p>
+              <h1>Designing the MVP for a B2B dental referral management platform</h1>
               
               <div class="hero-video-container">
-                <video class="hero-video" muted loop autoplay>
-                  <source src="assets/videos/theShaft video.mov" type="video/quicktime">
-                  <source src="assets/videos/theShaft video.mov" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
+                <img src="assets/images/Quick Referral.png" alt="ToothDoc MVP Design" class="hero-video">
               </div>
               
               <div class="project-meta">
                 <div class="meta-item">
-                  <strong>Role:</strong> Product Manager
+                  <strong>Role:</strong> Product Designer
                 </div>
                 <div class="meta-item">
-                  <strong>Team:</strong> 1 PM (me!) <br> 2 Engineers <br> 1 Designer
+                  <strong>Team:</strong> 1 Founder <br> 1 Designer (me!) <br> 2 Engineers
                 </div>
                 <div class="meta-item">
-                  <strong>Skills:</strong> Storyboarding <br> Visual Design <br> User Research
+                  <strong>Skills:</strong> Information Architecture <br> Design System <br> Prototyping <br> UI/UX 
                 </div>
                 <div class="meta-item">
                   <strong>Timeline:</strong> Jan ~ May 2025
@@ -484,147 +502,173 @@
       <!-- Project Overview -->
       <section id="overview" class="project-section">
         <h2>OVERVIEW</h2>
-         <h3>theShaft, one of Spectator's many products, is a go-to platform for undergrad housing information.</h3>
-         <p class="sub-text">In Spring 2025, I led the redesign of theShaft, primarily focusing on the housing lottery calculator and dorm comparison tool.</p>
+        <h3>ToothDoc is a comprehensive B2B platform designed to streamline tedious dental referral operations into easy, quick flows.</h3>
+        <p class="sub-text">During the internship, I had the chance to lead design on the end-to-end journey of the MVP, before user testing.</p>
  
-         <div class="project-image-section">
-           <img src="assets/images/Comparison Result.png" alt="Comparison result page" class="project-image">
-         </div>
+        <div class="project-image-section">
+          <img src="assets/images/ToothDoc Thumbnail.png" alt="ToothDoc platform overview" class="project-image">
+        </div>
 
-         <h2>OUTCOMES</h2>
+        <h2>OUTCOMES</h2>
         <div class="process-steps">
           <div class="process-step">
-            <h4>Enhanced the lottery calculator</h4>
-            <p class="sub-text">Through meetings with Columbia Housing and dev handoff</p>
+            <h4>Complete MVP Design</h4>
+            <p class="sub-text">Delivered comprehensive design system and user flows</p>
           </div>
           <div class="process-step">
-            <h4>Introduced a new comparison feature</h4>
-            <p class="sub-text">Which will roll out in Fall 2025</p>
+            <h4>Internal Documentation</h4>
+            <p class="sub-text">Created internal documentation for future initiatives</p>
           </div>
           <div class="process-step">
-            <h4>Revamped the information architecture</h4>
-            <p class="sub-text">For clarity and intuitiveness</p>
+            <h4>Design System</h4>
+            <p class="sub-text">Established scalable design patterns and components</p>
           </div>
         </div>
       </section>
 
       <div class="divider"></div>
 
-             <!-- Initial Findings -->
-       <section id="initial-findings" class="project-section">
-        <h2>INITIAL FINDINGS</h2>
-        <h3>An either or situation between Columbia's official housing website and theShaft...</h3>
-        <p class="sub-text">The official housing website is a great resource, but it's not the most intuitive or comprehensive. We found that theShaft spoke more to the needs of students, as we provide more helpful functionalities for the information they need.</p>
+      <!-- Value Proposition -->
+      <section id="value-proposition" class="project-section">
+        <h2>VALUE PROPOSITION</h2>
+        <h3>Founder's firsthand experience of pain points in dental referral operations</h3>
+        <p class="sub-text">As a dentist herself, she saw a problem in the dental referral process. Many still operate with pen and paper, which often gets lost or misplaced. This slows down the referral process and can lead to missed opportunities.</p>
+        
         <div class="project-image-section">
-          <img src="assets/images/User interview.png" alt="TheShaft interview log" class="project-image">
+          <div class="three-image-row">
+            <img src="assets/images/Value1.png" alt="Painpoint1" class="project-image">
+            <img src="assets/images/Value2.png" alt="Painpoint2" class="project-image">
+            <img src="assets/images/Value3.png" alt="Painpoint3" class="project-image">
+          </div>
         </div>
 
-        <h2>INSIGHTS</h2>
         <div class="project-grid">
           <div>
-            <h4>They want easy information</h4>
-            <p class="sub-text">They don't like spending effort/time into housing, unless it's directly important to them.</p>
+            <h4>Flexibility</h4>
+            <p class="sub-text">A referral network with various specialties, locations, and availability.</p>
           </div>
           <div>
-            <h4>Housing lottery calculator</h4>
-            <p class="sub-text">The calculator is the most used feature on theShaft.</p>
+            <h4>Convenient Tracking</h4>
+            <p class="sub-text">With an online database, losing a paper ticket is no longer a problem.</p>
           </div>
           <div>
-            <h4>Areas for improvement</h4>
-            <p class="sub-text">There's difficulty in comparing/tracking options & understanding room types and policies.</p>
+            <h4>Easy Management</h4>
+            <p class="sub-text">No longer a fragmented system of countless paper tickets, for dentists.</p>
           </div>
         </div>
+      </section>
 
-        <h2>STORYBOARD</h2>
-        <h3>Navigating through different options and juggling them annoyed them...</h3>
-        <p class="sub-text">We put ourselves into the shoes of a freshman trying to figure out where to live next year with their friends.</p>
+      <div class="divider"></div>
+
+      <!-- Design Process -->
+      <section id="design-process" class="project-section">
+        <h2>DESIGN PROCESS</h2>
+        <p>My design approach focused on translating the founder's visions into an intuitive interface. In weekly meetings, we validated the core functionality and features, and discussed the design direction.</p>
+        
         <div class="project-image-section">
-          <img src="assets/images/Storyboard.png" alt="Storyboard" class="project-image">
+          <img src="assets/images/Core functionality.png" alt="ToothDoc core functionality" class="project-image">
+        </div>
+
+        <p>We agreed on the priority of Dashboard and Referral, as they would be the most used and helpful features for dentists.</p>
+        <div class="project-image-section">
+          <img src="assets/images/Information architecture.png" alt="ToothDoc structure" class="project-image">
+        </div>
+
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Design Exploration -->
+      <section id="design-exploration" class="project-section">
+        <h2>DESIGN EXPLORATION</h2>
+        <h3>Visualizing referral tracker data</h3>
+        <p>A person would have 6 different status regarding the referrals. I had to come up with a clear and intuitive way to categorize and visualize the data. I explored the usage of icons, colors, and shapes to distinguish the statuses.</p>
+        <p>Upon exploring and discussing with the team, we decided to use a combination of icons and colors to distinguish the statuses. This was mainly because some colors have intuitive meanings, and well-chosen icons are recognizable. We also decided to incorporate a pie chart to visualize the proportions of each status – with a plan to test if the users find such visualization helpful.</p>
+        <div class="project-image-section">
+          <img src="assets/images/Tracker Exploration.png" alt="ToothDoc design exploration" class="project-image">
+        </div>
+        
+        <h3>Highlighting the wins</h3>
+        <p>By the end of the internship, I pitched an idea to emphasize ToothDoc's value propositions. By displaying the direct benefit of ToothDoc's network and referral system, I sought for ways that would encourage customer retention.</p>
+        <div class="project-image-section">
+          <img src="assets/images/Monthly.png" alt="Value highlighting suggestion" class="project-image">
         </div>
       </section>
 
       <div class="divider"></div>
 
-      <!-- Solution -->
-      <section id="solution" class="project-section">
-        <h2>MEETING WITH COLUMBIA HOUSING</h2>
-        <p>As the source of truth for housing information, we wanted to make sure we were aligned with them. We learned that a sophomore dormitory is closed for the next academic year due to construction, and also that 3 new housings will be added to the portfolio. We needed to reflect these changes in our lottery calculator and inform the students of the changes.</p>
-      </section>
-
-      <div class="divider"></div>
-
-             <!-- Roadblock -->
-       <section id="roadblocks" class="project-section">
-         <h2>ROADBLOCK</h2>
-         
-         <div class="horizontal-content-row">
-           <div class="row-description">
-             <h4>Functionality vs Feasibility</h4>
-             <p class="sub-text">The initial comparison feature required cookies and user profile. However, there wasn't enough technical bandwidth to implement this.</p>
-           </div>
-
-           <div class="row-image">
-            <img src="assets/images/Initial housing comp.png" alt="Roadblock example" class="row-img">
-          </div>
-         </div>
-
-         <h2>HOW MIGHT WE?</h2>
-         <h3>Achieve the same feature, in a different way?</h3>
-         <p class="sub-text">Cookies and user profile were the problem. We needed to find a more direct way path for comparison. To do so, I created a flowchart to visualize the user journey.</p>
-         <div class="project-image-section">
-          <img src="assets/images/Flowchart.png" alt="Flowchart" class="project-image">
+      <!-- Design System -->
+      <section id="design-system" class="project-section">
+        <h2>DESIGN SYSTEM</h2>
+        <h3>A simple design system to streamline the development of core product features and ensure consistency across the platform.</h3>
+        <div class="project-image-section">
+          <img src="assets/images/Design System.png" alt="ToothDoc design system" class="project-image">
         </div>
-
-        </section>
-
-        <div class="divider"></div>
-
-       <!-- Design Exploration -->
-       <section id="design-exploration" class="project-section">
-         <h2>DESIGN EXPLORATION</h2>
-         <div class="project-image-section">
-           <img src="assets/images/Design Exploration.png" alt="Design exploration" class="project-image">
-         </div>
-         <p>Upon discussing with the team and Head of Product, we decided that a comprehensive card would be the best approach to visually distinguish different options and encourage specific actions, which here is to compare. While Lists can include more information, we realized that by that point, the users would have some general idea of the housing options and would be more interested in the extensive comparison.</p>
-
-                  <div class="horizontal-content-row">
-            <div class="row-description">
-              <h4>Different path, same destination</h4>
-              <p class="sub-text">We decided to alternatively add a 'compare' button in individual housing pages, which would lead back to the listings page where students can choose options to compare.</p>
-            </div>
-            <div class="row-image">
-              <img src="assets/images/Comparison start.png" alt="Comparison start button" class="row-img">
-            </div>
-          </div>
-       </section>
+      </section>
 
       <div class="divider"></div>
 
       <!-- Final Designs -->
       <section id="final-designs" class="project-section">
         <h2>FINAL DESIGNS</h2>
-        <div class="project-image-section">
-          <video class="project-video" muted loop autoplay>
-            <source src="assets/videos/theShaft final vid.mov" type="video/quicktime">
-            <source src="assets/videos/theShaft final vid.mov" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+        <div class="horizontal-content-row">
+          <div class="row-description">
+            <h4>Onboarding</h4>
+          </div>
+
+          <div class="row-image">
+           <img src="assets/images/Onboarding.png" alt="ToothDoc onboarding" class="row-img">
+         </div>
+        </div>
+
+        <div class="horizontal-content-row">
+          <div class="row-description">
+            <h4>Dashboard</h4>
+          </div>
+
+          <div class="row-image">
+           <img src="assets/images/Dashboard.png" alt="ToothDoc dashboard" class="row-img">
+         </div>
+        </div>
+
+        <div class="horizontal-content-row">
+          <div class="row-description">
+            <h4>Referral Flow</h4>
+          </div>
+
+          <div class="row-image">
+           <img src="assets/images/Referral start.png" alt="ToothDoc referral flow" class="row-img">
+         </div>
+        </div>
+
+        <div class="horizontal-content-row">
+          <div class="row-description">
+            <h4>Quick Referral</h4>
+          </div>
+
+          <div class="row-image">
+           <img src="assets/images/Quick Referral.png" alt="ToothDoc quick referral" class="row-img">
+         </div>
         </div>
       </section>
 
       <div class="divider"></div>
 
-      <!-- Takeaways -->
-      <section id="takeaways" class="project-section">
-        <h2>TAKEAWAYS</h2>
-        <div class="horizontal-content-row">
-          <div class="row-description">
-            <p>Leading theShaft was like a growth injection. I got to lead a cross-functional product and make meaningful changes that impact the user experience directly, and faced a real constraint that we successfully maneuvered around.</p>
-            <p>And for my time at Spectator in general, I had a privilege to be a part of the best team in Spectator – Product! Not only did I encounter challenges that helped me grow further as a Product person, but also met many many friends that I hope to stay close throughout my life.</p>
-            <p>As for my journey with Spectator, I will be leading CULPA alongside theShaft next semester! You can think of CULPA as Columbia's Rate My Professor. I am unbelievably excited for what's ahead :)</p>
+      <!-- Key Learnings -->
+      <section id="lessons" class="project-section">
+        <h2>KEY LEARNINGS</h2>
+        <div class="project-grid">
+          <div>
+            <h4>Early & Frequent Communication</h4>
+            <p class="sub-text">Especially for the 0 to 1 of an early stage startup, communication is key. It's important to overload the communication to align ourselves with the founders' vision.</p>
           </div>
-          <div class="row-image">
-            <img src="assets/images/IMG_3806.jpg" alt="Product team photo" class="row-img">
+          <div>
+            <h4>Scalable Design for Future Iterations</h4>
+            <p class="sub-text">Often times, the design itself isn't final. It's important to design for scalability and future iterations.</p>
+          </div>
+          <div>
+            <h4>Design and Development are Intertwined</h4>
+            <p class="sub-text">I learned that they flow together. It's important to make informed design decisions, in terms of technicality, to ship things faster.</p>
           </div>
         </div>
       </section>
