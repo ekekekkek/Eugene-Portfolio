@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheShaft - Columbia's Housing Info Platform | Eugene's Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Make top navbar non-sticky */
+    .navbar {
+      position: relative;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    /* Project Layout with Sidebar */
+    .project-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    .project-sidebar {
+      position: sticky;
+      left: 0;
+      top: 0;
+      width: 280px;
+      height: 100vh;
+      background: #ffffff;
+      padding: 80px 0 40px 0;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-nav-item {
+      margin: 0;
+      margin-bottom: -8px;
+    }
+
+    .sidebar-nav-link {
+      display: block;
+      padding: 16px 32px;
+      color: #b7b7b7;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .sidebar-nav-link:hover {
+      color: #64748b;
+    }
+
+    .sidebar-nav-link.active {
+      color: #64748b;
+    }
+
+    /* Main Content Area */
+    .project-main {
+      flex: 1;
+    }
+
+    .project-hero {
+      padding: 80px 0 0 0;
+      background: #ffffff;
+    }
+    
+    .project-hero-container {
+      max-width: 950px;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .project-hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    
+    .project-hero-text h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: #1e293b;
+      min-width: 1000px;
+    }
+    
+    .project-hero-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #64748b;
+      margin-bottom: 30px;
+    }
+    
+    .hero-video-container {
+      width: 100%;
+      margin: 30px 0;
+      overflow: hidden;
+    }
+    
+    .hero-video {
+      width: 100%;
+      max-width: 950px;
+      height: auto;
+      display: block;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .project-meta {
+      display: flex;
+      gap: 100px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+    
+    .meta-item strong {
+      color: #1e293b;
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 40px;
+      transition: color 0.3s ease;
+    }
+    
+    .back-link:hover {
+      color: #1e293b;
+    }
+    
+    .project-section {
+      padding: 80px 0;
+      max-width: 950px;
+      margin: 0;
+    }
+    
+    .project-section:nth-child(even) {
+      background: #ffffff;
+    }
+    
+    .project-section h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      margin-top: 30px;
+      color: #1e293b8f;
+    }
+    
+    .project-section h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+
+    .project-section h4 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 15px;
+      color: #1e293b;
+    }
+    
+    .project-section p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+
+    .project-section p.sub-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #475569a2;
+      margin-bottom: 20px;
+      padding-top: 0;
+    }
+
+    .project-image-section {
+      margin: 40px 0;
+      max-width: 2000px;
+    }
+
+    .project-image-section .project-image {
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .project-image-section .project-video {
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .divider {
+      max-width: 950px;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.1);
+      margin: 30px 0;
+    }
+
+    .horizontal-content-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin: 40px 0;
+    }
+
+    .row-image {
+      width: 100%;
+    }
+
+    .row-img {
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .row-description {
+      padding-right: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .horizontal-content-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .row-description {
+        padding-left: 0;
+      }
+    }
+    
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      margin-top: 40px;
+    }
+    
+    .project-image {
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      margin-top: 40px;
+    }
+    
+    .process-step {
+      background: white;
+      border-radius: 12px;
+    }
+    
+    .process-step h4 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 15px;
+      color: #1e293b;
+    }
+    
+    .process-step p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #64748b;
+    }
+    
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    .tech-tag {
+      background: #e2e8f0;
+      color: #475569;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .outcomes {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: white;
+      padding: 60px 0;
+    }
+    
+    .outcomes h2 {
+      color: white;
+    }
+    
+    .outcomes p {
+      color: #cbd5e1;
+    }
+    
+    .outcome-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+    
+    .outcome-stat {
+      text-align: center;
+    }
+    
+    .outcome-stat h3 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: white;
+    }
+    
+    .outcome-stat p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+    }
+
+    /* Section IDs for smooth scrolling */
+    #overview, #market-research, #solution, #final-designs, #lessons {
+      scroll-margin-top: 100px;
+    }
+    
+    @media (max-width: 768px) {
+      .project-sidebar {
+        display: none;
+      }
+      
+      .project-main {
+        margin-left: 0;
+      }
+      
+      .project-hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .project-hero-text h1 {
+        font-size: 2.5rem;
+      }
+      
+      .project-section h2 {
+        font-size: 2rem;
+        margin-top: 30px;
+      }
+      
+      .project-meta {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html">Eugene</a>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html#work" class="nav-link">Work</a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#playground" class="nav-link">Playground</a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#about" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#resume" class="nav-link">Resume</a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="project-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="project-sidebar">
+                   <ul class="sidebar-nav">
+               <li class="sidebar-nav-item">
+                 <a href="index.html" class="sidebar-nav-link">← Back</a>
+               </li>
+               <li class="sidebar-nav-item">
+                 <a href="#overview" class="sidebar-nav-link">Overview</a>
+               </li>
+               <li class="sidebar-nav-item">
+                 <a href="#initial-findings" class="sidebar-nav-link">Initial Findings</a>
+               </li>
+               <li class="sidebar-nav-item">
+                 <a href="#roadblocks" class="sidebar-nav-link">Roadblock</a>
+               </li>
+               <li class="sidebar-nav-item">
+                 <a href="#design-exploration" class="sidebar-nav-link">Design Exploration</a>
+               </li>
+               <li class="sidebar-nav-item">
+                 <a href="#final-designs" class="sidebar-nav-link">Final Designs</a>
+               </li>
+               <li class="sidebar-nav-item">
+                 <a href="#takeaways" class="sidebar-nav-link">Takeaways</a>
+               </li>
+             </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="project-main">
+      <!-- Project Hero -->
+      <section class="project-hero">
+        <div class="project-hero-container">
+          <div class="project-hero-content">
+            <div class="project-hero-text">
+              <p>Columbia Daily Spectator | Jan ~ May 2025</p>
+              <h1>Updating the housing lottery calculator & dorm comparison tool</h1>
+              
+              <div class="hero-video-container">
+                <video class="hero-video" muted loop autoplay>
+                  <source src="assets/videos/theShaft video.mov" type="video/quicktime">
+                  <source src="assets/videos/theShaft video.mov" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              
+              <div class="project-meta">
+                <div class="meta-item">
+                  <strong>Role:</strong> Product Manager
+                </div>
+                <div class="meta-item">
+                  <strong>Team:</strong> 1 PM (me!) <br> 2 Engineers <br> 1 Designer
+                </div>
+                <div class="meta-item">
+                  <strong>Skills:</strong> Storyboarding <br> Visual Design <br> User Research
+                </div>
+                <div class="meta-item">
+                  <strong>Timeline:</strong> Jan ~ May 2025
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Overview -->
+      <section id="overview" class="project-section">
+        <h2>OVERVIEW</h2>
+         <h3>theShaft, one of Spectator's many products, is a go-to platform for undergrad housing information.</h3>
+         <p class="sub-text">In Spring 2025, I led the redesign of theShaft, primarily focusing on the housing lottery calculator and dorm comparison tool.</p>
+ 
+         <div class="project-image-section">
+           <img src="assets/images/Comparison Result.png" alt="Comparison result page" class="project-image">
+         </div>
+
+         <h2>OUTCOMES</h2>
+        <div class="process-steps">
+          <div class="process-step">
+            <h4>Enhanced the lottery calculator</h4>
+            <p class="sub-text">Through meetings with Columbia Housing and dev handoff</p>
+          </div>
+          <div class="process-step">
+            <h4>Introduced a new comparison feature</h4>
+            <p class="sub-text">Which will roll out in Fall 2025</p>
+          </div>
+          <div class="process-step">
+            <h4>Revamped the information architecture</h4>
+            <p class="sub-text">For clarity and intuitiveness</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+             <!-- Initial Findings -->
+       <section id="initial-findings" class="project-section">
+        <h2>INITIAL FINDINGS</h2>
+        <h3>An either or situation between Columbia's official housing website and theShaft...</h3>
+        <p class="sub-text">The official housing website is a great resource, but it's not the most intuitive or comprehensive. We found that theShaft spoke more to the needs of students, as we provide more helpful functionalities for the information they need.</p>
+        <div class="project-image-section">
+          <img src="assets/images/User interview.png" alt="TheShaft interview log" class="project-image">
+        </div>
+
+        <h2>INSIGHTS</h2>
+        <div class="project-grid">
+          <div>
+            <h4>They want easy information</h4>
+            <p class="sub-text">They don't like spending effort/time into housing, unless it's directly important to them.</p>
+          </div>
+          <div>
+            <h4>Housing lottery calculator</h4>
+            <p class="sub-text">The calculator is the most used feature on theShaft.</p>
+          </div>
+          <div>
+            <h4>Areas for improvement</h4>
+            <p class="sub-text">There's difficulty in comparing/tracking options & understanding room types and policies.</p>
+          </div>
+        </div>
+
+        <h2>STORYBOARD</h2>
+        <h3>Navigating through different options and juggling them annoyed them...</h3>
+        <p class="sub-text">We put ourselves into the shoes of a freshman trying to figure out where to live next year with their friends.</p>
+        <div class="project-image-section">
+          <img src="assets/images/Storyboard.png" alt="Storyboard" class="project-image">
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Solution -->
+      <section id="solution" class="project-section">
+        <h2>MEETING WITH COLUMBIA HOUSING</h2>
+        <p>As the source of truth for housing information, we wanted to make sure we were aligned with them. We learned that a sophomore dormitory is closed for the next academic year due to construction, and also that 3 new housings will be added to the portfolio. We needed to reflect these changes in our lottery calculator and inform the students of the changes.</p>
+      </section>
+
+      <div class="divider"></div>
+
+             <!-- Roadblock -->
+       <section id="roadblocks" class="project-section">
+         <h2>ROADBLOCK</h2>
+         
+         <div class="horizontal-content-row">
+           <div class="row-description">
+             <h4>Functionality vs Feasibility</h4>
+             <p class="sub-text">The initial comparison feature required cookies and user profile. However, there wasn't enough technical bandwidth to implement this.</p>
+           </div>
+
+           <div class="row-image">
+            <img src="assets/images/Initial housing comp.png" alt="Roadblock example" class="row-img">
+          </div>
+         </div>
+
+         <h2>HOW MIGHT WE?</h2>
+         <h3>Achieve the same feature, in a different way?</h3>
+         <p class="sub-text">Cookies and user profile were the problem. We needed to find a more direct way path for comparison. To do so, I created a flowchart to visualize the user journey.</p>
+         <div class="project-image-section">
+          <img src="assets/images/Flowchart.png" alt="Flowchart" class="project-image">
+        </div>
+
+        </section>
+
+        <div class="divider"></div>
+
+       <!-- Design Exploration -->
+       <section id="design-exploration" class="project-section">
+         <h2>DESIGN EXPLORATION</h2>
+         <div class="project-image-section">
+           <img src="assets/images/Design Exploration.png" alt="Design exploration" class="project-image">
+         </div>
+         <p>Upon discussing with the team and Head of Product, we decided that a comprehensive card would be the best approach to visually distinguish different options and encourage specific actions, which here is to compare. While Lists can include more information, we realized that by that point, the users would have some general idea of the housing options and would be more interested in the extensive comparison.</p>
+
+                  <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Different path, same destination</h4>
+              <p class="sub-text">We decided to alternatively add a 'compare' button in individual housing pages, which would lead back to the listings page where students can choose options to compare.</p>
+            </div>
+            <div class="row-image">
+              <img src="assets/images/Comparison start.png" alt="Comparison start button" class="row-img">
+            </div>
+          </div>
+       </section>
+
+      <div class="divider"></div>
+
+      <!-- Final Designs -->
+      <section id="final-designs" class="project-section">
+        <h2>FINAL DESIGNS</h2>
+        <div class="project-image-section">
+          <video class="project-video" muted loop autoplay>
+            <source src="assets/videos/theShaft final vid.mov" type="video/quicktime">
+            <source src="assets/videos/theShaft final vid.mov" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Takeaways -->
+      <section id="takeaways" class="project-section">
+        <h2>TAKEAWAYS</h2>
+        <div class="horizontal-content-row">
+          <div class="row-description">
+            <p>Leading theShaft was like a growth injection. I got to lead a cross-functional product and make meaningful changes that impact the user experience directly, and faced a real constraint that we successfully maneuvered around.</p>
+            <p>And for my time at Spectator in general, I had a privilege to be a part of the best team in Spectator – Product! Not only did I encounter challenges that helped me grow further as a Product person, but also met many many friends that I hope to stay close throughout my life.</p>
+            <p>As for my journey with Spectator, I will be leading CULPA alongside theShaft next semester! You can think of CULPA as Columbia's Rate My Professor. I am unbelievably excited for what's ahead :)</p>
+          </div>
+          <div class="row-image">
+            <img src="assets/images/IMG_3806.jpg" alt="Product team photo" class="row-img">
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <p>&copy; 2024 Eugene. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> 
