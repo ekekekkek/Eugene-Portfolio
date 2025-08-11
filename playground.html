@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playground - Eugene's Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html">Eugene</a>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html#work" class="nav-link">Work</a>
+        </li>
+        <li class="nav-item">
+          <a href="playground.html" class="nav-link active">Playground</a>
+        </li>
+        <li class="nav-item">
+          <a href="about.html" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="assets/Resume.pdf" target="_blank" class="nav-link">Resume</a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Playground Section -->
+  <section class="section">
+    <div class="container">
+      <div class="playground-grid">
+        <div class="playground-item">
+          <div class="playground-video-container">
+            <video class="playground-video" muted loop autoplay>
+              <source src="assets/videos/experiment1-demo.mp4" type="video/mp4">
+              <source src="assets/videos/experiment1-demo.webm" type="video/webm">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="playground-content">
+            <h3>Stock Trading Advisor</h3>
+            <p class="playground-description">Building a full-stack advisory platform that incorporates Turtle & momentum trading strategies</p>
+            <div class="playground-tags">
+              <span class="tag">Automation</span>
+              <span class="tag">Python</span>
+              <span class="tag">Cursor</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="playground-item">
+          <div class="playground-video-container">
+            <video class="playground-video" muted loop autoplay>
+              <source src="assets/videos/experiment2-demo.mp4" type="video/mp4">
+              <source src="assets/videos/experiment2-demo.webm" type="video/webm">
+              Your browser does not support the video tag.
+            </div>
+          <div class="playground-content">
+            <h3>Tech Exploration</h3>
+            <p class="playground-description">Exploring emerging technologies and building prototypes.</p>
+            <div class="playground-tags">
+              <span class="tag">AI/ML</span>
+              <span class="tag">WebRTC</span>
+              <span class="tag">Prototype</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Eugene. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html> 
