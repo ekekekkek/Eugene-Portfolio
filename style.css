@@ -369,6 +369,22 @@ body {
   background: #ffffff;
 }
 
+/* Playground item as link */
+.playground-item .playground-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.playground-item .playground-link:hover {
+  color: inherit;
+}
+
+.playground-item .playground-link::after {
+  display: none;
+}
+
 /* About Section */
 .about-content {
   max-width: 800px;
