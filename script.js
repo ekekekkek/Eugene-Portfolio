@@ -131,14 +131,14 @@ if (document.querySelector('.project-sidebar')) {
   const sidebarLinks = document.querySelectorAll('.sidebar-nav-link');
   const projectSections = document.querySelectorAll('.project-section[id]');
 
-                 // Smooth scrolling for sidebar links (excluding the Back link)
+                 // Smooth scrolling for sidebar links (excluding external links)
                sidebarLinks.forEach(link => {
                  link.addEventListener('click', function (e) {
                    const href = this.getAttribute('href');
                    
-                   // Skip smooth scrolling for the Back link
-                   if (href === 'index.html') {
-                     return; // Allow normal navigation
+                   // Skip smooth scrolling for external links (Back link)
+                   if (!href.startsWith('#')) {
+                     return; // Allow normal navigation for external links
                    }
                    
                    e.preventDefault();

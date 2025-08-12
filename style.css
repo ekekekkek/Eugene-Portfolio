@@ -73,9 +73,9 @@ body {
   position: relative;
 }
 
-.nav-link:hover {
-  color: #007AFF;
-}
+  .nav-link:hover {
+    color: #0059ff;
+  }
 
 .nav-link::after {
   content: '';
@@ -84,7 +84,7 @@ body {
   height: 2px;
   bottom: -5px;
   left: 0;
-  background-color: #007AFF;
+  background-color: #0059ff;
   transition: width 0.3s ease;
 }
 
@@ -93,7 +93,7 @@ body {
 }
 
 .nav-link.active {
-  color: #007AFF;
+  color: #0059ff;
 }
 
 .nav-link.active::after {
@@ -302,7 +302,7 @@ body {
 }
 
 .tag:hover {
-  background: #007AFF;
+  background: #0059ff;
   color: #ffffff;
 }
 
@@ -315,7 +315,7 @@ body {
 
 .work-link,
 .playground-link {
-  color: #007AFF;
+  color: #0059ff;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
@@ -336,7 +336,7 @@ body {
   height: 1px;
   bottom: -2px;
   left: 0;
-  background-color: #007AFF;
+  background-color: #0059ff;
   transition: width 0.3s ease;
 }
 
@@ -349,7 +349,7 @@ body {
 .playground-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 3rem;
+  gap: 2rem;
   margin-top: 2rem;
   padding-top: 50px;
 }
@@ -357,7 +357,6 @@ body {
 .playground-item {
   background: #f8fafc;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -367,6 +366,7 @@ body {
   transform: translateY(-8px);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   background: #ffffff;
+  border-color: #0059ff;
 }
 
 /* Playground item as link */
@@ -476,7 +476,7 @@ body {
   font-weight: 600;
   margin-bottom: 1.5rem;
   color: #1a1a1a;
-  border-bottom: 2px solid #007AFF;
+  border-bottom: 2px solid #0059ff;
   padding-bottom: 0.5rem;
 }
 

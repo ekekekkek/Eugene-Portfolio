@@ -38,7 +38,7 @@ Portfolio/
 
 ### Styling
 - **Typography**: Inter font family
-- **Colors**: Clean black/white with blue accents (#007AFF)
+- **Colors**: Clean black/white with blue accents (#0059ff)
 - **Layout**: CSS Grid and Flexbox
 - **Animations**: CSS transitions and keyframes
 

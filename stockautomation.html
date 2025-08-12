@@ -67,6 +67,48 @@
       color: #64748b;
     }
 
+    .divider {
+      max-width: 950px;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.1);
+      margin: 30px 0;
+    }
+
+    .project-image-section {
+      margin: 40px 0;
+      max-width: 2000px;
+    }
+
+    .project-image-section .project-image {
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .horizontal-content-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin: 40px 0;
+    }
+
+    .row-image {
+      width: 100%;
+    }
+
+    .row-img {
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .row-description {
+      padding-right: 20px;
+    }
+
     /* Main Content Area */
     .project-main {
       flex: 1;
@@ -123,7 +165,7 @@
     
     .project-meta {
       display: flex;
-      gap: 70px;
+      gap: 40px;
       flex-wrap: wrap;
       margin-bottom: 40px;
     }
@@ -268,6 +310,15 @@
       .image-gallery {
         grid-template-columns: 1fr;
       }
+      
+      .horizontal-content-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .row-description {
+        padding-right: 0;
+      }
     }
   </style>
 </head>
@@ -306,25 +357,19 @@
       <nav class="sidebar-nav">
         <ul>
           <li class="sidebar-nav-item">
+            <a href="playground.html" class="sidebar-nav-link">← Back</a>
+          </li>
+          <li class="sidebar-nav-item">
             <a href="#overview" class="sidebar-nav-link active">Overview</a>
           </li>
           <li class="sidebar-nav-item">
-            <a href="#problem" class="sidebar-nav-link">Problem</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#solution" class="sidebar-nav-link">Solution</a>
+            <a href="#planning" class="sidebar-nav-link">Planning</a>
           </li>
           <li class="sidebar-nav-item">
             <a href="#implementation" class="sidebar-nav-link">Implementation</a>
           </li>
           <li class="sidebar-nav-item">
             <a href="#results" class="sidebar-nav-link">Results</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#tech-stack" class="sidebar-nav-link">Tech Stack</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#future" class="sidebar-nav-link">Future Work</a>
           </li>
         </ul>
       </nav>
@@ -335,34 +380,32 @@
       <!-- Hero Section -->
       <section class="project-hero">
         <div class="project-hero-container">
-          <a href="playground.html" class="back-link">
-            ← Back to Playground
-          </a>
-          
           <div class="project-hero-content">
             <div class="project-hero-text">
-              <h1>Stock Trading Advisor</h1>
-              <p>Building an advisory platform that incorporates Turtle Trading & momentum strategies to help traders make data-driven decisions in volatile markets.</p>
-              
+              <p>Personal Project | July 2025 ~ Present</p>
+              <h1>Shipping a full-stack trading advisor</h1>
+              <div class="hero-video-container">
+                <video class="hero-video" muted loop autoplay>
+                  <source src="assets/videos/Addup quick.mov" type="video/quicktime">
+                  <source src="assets/videos/Addup quick.mov" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
               <div class="project-meta">
                 <div class="meta-item">
                   <strong>Role:</strong> Full-Stack Developer
                 </div>
                 <div class="meta-item">
-                  <strong>Timeline:</strong> 3 months
+                  <strong>Skills:</strong> Version control <br> API Integration <br> Prompt Engineering
                 </div>
                 <div class="meta-item">
-                  <strong>Status:</strong> In Development
+                    <strong>Languages:</strong> Python(FastAPI, SQLAlchemy) <br> JavaScript(React, Node.js) <br> SQL(PostgreSQL) 
+                  </div>
+                <div class="meta-item">
+                  <strong>Timeline:</strong> July 2025 ~
                 </div>
               </div>
-            </div>
-            
-            <div class="hero-video-container">
-              <video class="hero-video" muted loop autoplay>
-                <source src="assets/videos/Turtle Trading Thumbnail.mov" type="video/quicktime">
-                <source src="assets/videos/Turtle Trading Thumbnail.mov" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
             </div>
           </div>
         </div>
@@ -371,218 +414,181 @@
       <!-- Overview Section -->
       <section id="overview" class="project-section">
         <div class="project-hero-container">
-          <h2>Overview</h2>
-          <h3>Automated Trading Strategy Platform</h3>
-          <p>The Stock Trading Advisor is a comprehensive platform that combines the time-tested Turtle Trading methodology with modern momentum analysis to provide traders with automated insights and strategy recommendations. The system analyzes market data in real-time, identifies trading opportunities, and generates actionable advice based on proven quantitative strategies.</p>
-          
-          <p class="sub-text">This project represents my exploration into algorithmic trading, financial data analysis, and building robust systems that can handle real-time market data processing.</p>
+          <h2>OVERVIEW</h2>
+          <h3>Automating a data-driven trading operations strategy</h3>
+          <p>My family took a class on Turtle Trading, and I wanted to automate the process of trading and minimize the impact of human emotions. From finding the right stocks with strong momentum to risk management, I wanted to build a Jarvis-like assistant that would help me make data-driven decisions.</p>
         </div>
       </section>
 
-      <!-- Problem Section -->
-      <section id="problem" class="project-section">
+      <div class="divider"></div>
+
+      <!-- Planning Section -->
+      <section id="planning" class="project-section">
         <div class="project-hero-container">
-          <h2>Problem</h2>
-          <h3>Challenges in Modern Trading</h3>
-          <p>Individual traders face several significant challenges in today's fast-paced markets:</p>
-          
-          <ul>
-            <li><strong>Emotional Decision Making:</strong> Human traders often make decisions based on fear, greed, or other emotions rather than systematic analysis</li>
-            <li><strong>Information Overload:</strong> The sheer volume of market data and news can overwhelm traders, leading to analysis paralysis</li>
-            <li><strong>Inconsistent Strategy Execution:</strong> Even with solid strategies, maintaining discipline and consistency is extremely difficult</li>
-            <li><strong>Market Timing:</strong> Identifying optimal entry and exit points requires constant monitoring and quick decision-making</li>
-            <li><strong>Risk Management:</strong> Proper position sizing and stop-loss placement are critical but often neglected</li>
-          </ul>
-          
-          <p>The Turtle Trading system, developed by Richard Dennis and William Eckhardt in the 1980s, addressed many of these issues through systematic rules and mechanical execution. However, modern markets require adaptations and enhancements to remain effective.</p>
+          <h2>PLANNING</h2>
+          <h3>Everything to be a formula of repeated tasks</h3>
+          <p>When trading stocks, there are mainly two components of actions – buying and selling. The goal is to minimize the loss and maximize the profit.</p>
+
+          <div class="project-image-section">
+            <img src="assets/images/Brainstorm.png" alt="Trading Brainstorm" class="project-image">
+          </div>
+        </div>
+
+        <div class="project-hero-container">
+            <h3>Core Components of a Systematic Trading Advisory Platform</h3>
+                         <h4>Pre-entry</h4>
+              <ul>
+                 <li>Market scanner: Monitors multiple markets for trading opportunities. Finds and suggests stocks that satisfy the designed criteria.</li>
+             </ul>
+
+             <h4>Entry</h4>
+              <ul>
+                 <li>Entry point: Checking the stock's momentum, volatility, and market strength indicators.</li>
+                 <li>Position size: Calculated based on user capital, risk tolerance, and stock's volatility.</li>
+              </ul>
+
+             <h4>Post-entry</h4>
+              <ul>
+                 <li>Stop-loss calculation: Depending on the risk tolerance, the stop-loss is calculated as a percentage below of the entry price.</li>
+                 <li>Risk Management: Automated position sizing based on account size and volatility, plus dynamic stop-loss adjustment.</li>
+                 <li>Add-up: When a stock price goes up to a certain point, we buy more shares, joining the trend.</li>
+                 <li>Trailing stop: When adding up, we need to calculate the trailing stop to protect the profit while not exiting too early.</li>
+              </ul>
         </div>
       </section>
 
-      <!-- Solution Section -->
-      <section id="solution" class="project-section">
-        <div class="project-hero-container">
-          <h2>Solution</h2>
-          <h3>Systematic Trading Advisory Platform</h3>
-          <p>I'm developing a platform that combines the core principles of Turtle Trading with modern momentum analysis and risk management techniques:</p>
-          
-          <h4>Core Components</h4>
-          <ul>
-            <li><strong>Strategy Engine:</strong> Implements Turtle Trading rules including trend following, position sizing, and entry/exit signals</li>
-            <li><strong>Momentum Analysis:</strong> Real-time calculation of price momentum, volatility, and market strength indicators</li>
-            <li><strong>Risk Management:</strong> Automated position sizing based on account size and volatility, plus dynamic stop-loss adjustment</li>
-            <li><strong>Market Scanner:</strong> Continuously monitors multiple markets and timeframes for trading opportunities</li>
-            <li><strong>Alert System:</strong> Notifies traders of potential setups and strategy signals</li>
-          </ul>
-          
-          <h4>Key Features</h4>
-          <ul>
-            <li><strong>Real-time Data Processing:</strong> Handles live market data feeds with minimal latency</li>
-            <li><strong>Backtesting Engine:</strong> Validates strategies against historical data</li>
-            <li><strong>Portfolio Dashboard:</strong> Visual representation of current positions and performance metrics</li>
-            <li><strong>Strategy Customization:</strong> Allows traders to modify parameters while maintaining core principles</li>
-          </ul>
-        </div>
-      </section>
+      <div class="divider"></div>
 
       <!-- Implementation Section -->
       <section id="implementation" class="project-section">
         <div class="project-hero-container">
-          <h2>Implementation</h2>
+          <h2>IMPLEMENTATION</h2>
           <h3>Technical Architecture</h3>
           <p>The platform is built with a modular architecture that prioritizes reliability, performance, and maintainability:</p>
           
           <h4>Backend Infrastructure</h4>
           <ul>
-            <li><strong>Data Layer:</strong> PostgreSQL for historical data storage, Redis for real-time caching</li>
-            <li><strong>Processing Engine:</strong> Python-based strategy engine with NumPy and Pandas for calculations</li>
-            <li><strong>API Layer:</strong> FastAPI for high-performance REST endpoints and WebSocket connections</li>
-            <li><strong>Task Queue:</strong> Celery with Redis for handling background calculations and alerts</li>
+            <li>FastAPI with Uvicorn ASGI server</li>
+            <li>JWT Authentication, password hashing</li>
+            <li>Configurable CORS protection</li>
           </ul>
           
           <h4>Frontend Application</h4>
           <ul>
-            <li><strong>Dashboard:</strong> React-based interface with real-time data visualization</li>
-            <li><strong>Charts:</strong> TradingView integration for professional-grade charting</li>
-            <li><strong>Responsive Design:</strong> Mobile-first approach for traders on the go</li>
-            <li><strong>Real-time Updates:</strong> WebSocket connections for live data streaming</li>
+            <li>React.js for hooks and functional components</li>
+            <li>Tailwind CSS for styling</li>
+            <li>Firebase hosting configuration</li>
+            <li>Node.js for npm and package management</li>
+          </ul>
+
+          <h4>Database</h4>
+          <ul>
+            <li>SQLite for development, PostgreSQL for production</li>
+            <li>SQLAlchemy ORM with Alembic migrations</li>
           </ul>
           
           <h4>Data Pipeline</h4>
           <ul>
-            <li><strong>Market Data:</strong> Integration with multiple data providers for redundancy</li>
-            <li><strong>Data Validation:</strong> Automated quality checks and anomaly detection</li>
-            <li><strong>Storage Strategy:</strong> Time-series optimized database design for efficient queries</li>
-            <li><strong>Backup & Recovery:</strong> Automated backup systems with point-in-time recovery</li>
+            <li>Yahoo Finance API for historical data</li>
+            <li>FinnHub API for real-time quotes</li>
+            <li>API response-driven frontend state synchronization</li>
           </ul>
         </div>
       </section>
+
+      <div class="divider"></div>
 
       <!-- Results Section -->
       <section id="results" class="project-section">
         <div class="project-hero-container">
-          <h2>Results</h2>
-          <h3>Current Progress & Achievements</h3>
-          <p>While the project is still in development, several key milestones have been achieved:</p>
-          
-          <h4>Completed Components</h4>
-          <ul>
-            <li><strong>Strategy Engine:</strong> Core Turtle Trading algorithm implemented and tested</li>
-            <li><strong>Data Integration:</strong> Successfully connected to market data feeds</li>
-            <li><strong>Backtesting Framework:</strong> Historical performance analysis working</li>
-            <li><strong>Basic Dashboard:</strong> Initial UI for strategy monitoring</li>
-          </ul>
-          
-          <h4>Performance Metrics</h4>
-          <ul>
-            <li><strong>Data Processing:</strong> Sub-second latency for real-time calculations</li>
-            <li><strong>Strategy Execution:</strong> 99.9% uptime in testing environment</li>
-            <li><strong>Backtesting Speed:</strong> 10+ years of historical data processed in under 5 minutes</li>
-            <li><strong>Memory Efficiency:</strong> Optimized data structures reducing memory usage by 40%</li>
-          </ul>
-          
-          <h4>Challenges Overcome</h4>
-          <ul>
-            <li><strong>Data Synchronization:</strong> Resolved issues with multiple data source integration</li>
-            <li><strong>Performance Optimization:</strong> Implemented caching strategies for frequently accessed calculations</li>
-            <li><strong>Error Handling:</strong> Built robust error handling for market data anomalies</li>
-            <li><strong>Testing Framework:</strong> Developed comprehensive testing suite for strategy validation</li>
-          </ul>
-        </div>
-      </section>
+          <h2>RESULTS</h2>
+          <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Log In</h4>
+            </div>
+  
+            <div class="row-image">
+              <video class="row-img" muted loop autoplay>
+                <source src="assets/videos/Login.mov" type="video/quicktime">
+                <source src="assets/videos/Login.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div> 
 
-      <!-- Tech Stack Section -->
-      <section id="tech-stack" class="project-section">
-        <div class="project-hero-container">
-          <h2>Tech Stack</h2>
-          <h3>Technologies & Tools</h3>
-          <p>The platform leverages modern technologies to ensure reliability, scalability, and maintainability:</p>
-          
-          <h4>Backend Technologies</h4>
-          <div class="tech-stack">
-            <span class="tech-tag">Python 3.11+</span>
-            <span class="tech-tag">FastAPI</span>
-            <span class="tech-tag">PostgreSQL</span>
-            <span class="tech-tag">Redis</span>
-            <span class="tech-tag">Celery</span>
-            <span class="tech-tag">NumPy</span>
-            <span class="tech-tag">Pandas</span>
-            <span class="tech-tag">SQLAlchemy</span>
-          </div>
-          
-          <h4>Frontend Technologies</h4>
-          <div class="tech-stack">
-            <span class="tech-tag">React 18</span>
-            <span class="tech-tag">TypeScript</span>
-            <span class="tech-tag">Tailwind CSS</span>
-            <span class="tech-tag">WebSocket</span>
-            <span class="tech-tag">TradingView Charts</span>
-            <span class="tech-tag">Chart.js</span>
-          </div>
-          
-          <h4>Infrastructure & DevOps</h4>
-          <div class="tech-stack">
-            <span class="tech-tag">Docker</span>
-            <span class="tech-tag">Docker Compose</span>
-            <span class="tech-tag">Git</span>
-            <span class="tech-tag">GitHub Actions</span>
-            <span class="tech-tag">AWS</span>
-            <span class="tech-tag">Nginx</span>
-          </div>
-          
-          <h4>Data & Analytics</h4>
-          <div class="tech-stack">
-            <span class="tech-tag">Market Data APIs</span>
-            <span class="tech-tag">WebSocket Feeds</span>
-            <span class="tech-tag">Time Series DB</span>
-            <span class="tech-tag">Data Validation</span>
-            <span class="tech-tag">Performance Metrics</span>
-          </div>
-        </div>
-      </section>
+          <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Daily Market Analysis</h4>
+            </div>
+  
+            <div class="row-image">
+              <video class="row-img" muted loop autoplay>
+                <source src="assets/videos/Daily market analysis.mov" type="video/quicktime">
+                <source src="assets/videos/Daily market analysis.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div> 
 
-      <!-- Future Work Section -->
-      <section id="future" class="project-section">
-        <div class="project-hero-container">
-          <h2>Future Work</h2>
-          <h3>Roadmap & Enhancements</h3>
-          <p>The project has a clear roadmap for continued development and enhancement:</p>
-          
-          <h4>Short-term Goals (Next 3 months)</h4>
-          <ul>
-            <li><strong>Live Trading Integration:</strong> Connect to broker APIs for paper trading</li>
-            <li><strong>Advanced Risk Management:</strong> Implement portfolio-level risk controls</li>
-            <li><strong>Mobile Application:</strong> Develop native mobile apps for iOS and Android</li>
-            <li><strong>User Authentication:</strong> Secure user accounts and strategy privacy</li>
-          </ul>
-          
-          <h4>Medium-term Goals (3-6 months)</h4>
-          <ul>
-            <li><strong>Machine Learning Integration:</strong> Add ML-based pattern recognition</li>
-            <li><strong>Multi-Strategy Support:</strong> Expand beyond Turtle Trading to other strategies</li>
-            <li><strong>Social Features:</strong> Strategy sharing and community features</li>
-            <li><strong>Advanced Analytics:</strong> Comprehensive performance reporting and analysis</li>
-          </ul>
-          
-          <h4>Long-term Vision (6+ months)</h4>
-          <ul>
-            <li><strong>Institutional Features:</strong> Support for larger portfolios and institutional clients</li>
-            <li><strong>Global Markets:</strong> Expand to international markets and currencies</li>
-            <li><strong>AI-Powered Insights:</strong> Advanced AI for market prediction and strategy optimization</li>
-            <li><strong>Regulatory Compliance:</strong> Full compliance with financial regulations</li>
-          </ul>
-          
-          <p class="sub-text">This project represents a long-term commitment to building robust, scalable financial technology that can help traders make better decisions through systematic analysis and automation.</p>
+          <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Adding Stock</h4>
+            </div>
+  
+            <div class="row-image">
+              <video class="row-img" muted loop autoplay>
+                <source src="assets/videos/Adding stock.mov" type="video/quicktime">
+                <source src="assets/videos/Adding stock.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div> 
+
+          <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Add Up</h4>
+            </div>
+  
+            <div class="row-image">
+              <video class="row-img" muted loop autoplay>
+                <source src="assets/videos/Addup.mov" type="video/quicktime">
+                <source src="assets/videos/Addup.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div> 
+
+          <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Selling</h4>
+            </div>
+  
+            <div class="row-image">
+              <video class="row-img" muted loop autoplay>
+                <source src="assets/videos/Selling.mov" type="video/quicktime">
+                <source src="assets/videos/Selling.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div> 
+
+          <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Trade History</h4>
+            </div>
+  
+            <div class="row-image">
+              <video class="row-img" muted loop autoplay>
+                <source src="assets/videos/Trade history.mov" type="video/quicktime">
+                <source src="assets/videos/Trade history.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div> 
         </div>
       </section>
     </main>
   </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2024 Eugene. All rights reserved.</p>
-    </div>
-  </footer>
 
   <script src="script.js"></script>
 </body>
