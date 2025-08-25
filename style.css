@@ -628,4 +628,33 @@ html {
     font-size: 1.8rem;
   }
 }
+
+/* Columbia link styling */
+.columbia-link {
+  color: #1e40af;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.columbia-link:hover {
+  color: #1d4ed8;
+  background-color: rgba(30, 64, 175, 0.1);
+  transform: translateY(-1px);
+}
+
+.columbia-link::after {
+  content: '↗';
+  font-size: 0.8em;
+  margin-left: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.columbia-link:hover::after {
+  opacity: 1;
+}
   
