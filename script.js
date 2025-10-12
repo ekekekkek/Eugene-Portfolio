@@ -123,6 +123,35 @@ document.querySelectorAll('video').forEach(video => {
 
 // Videos are now managed by Intersection Observer
 
+// Cursor-following tooltip functionality
+document.querySelectorAll('.tooltip-container').forEach(container => {
+  const tooltip = container.querySelector('.tooltip-text');
+  
+  container.addEventListener('mouseenter', () => {
+    tooltip.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    tooltip.style.visibility = 'visible';
+    tooltip.style.opacity = '1';
+    tooltip.style.transform = 'translate(10px, -50%) scale(1)';
+  });
+  
+  container.addEventListener('mouseleave', () => {
+    tooltip.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    tooltip.style.visibility = 'hidden';
+    tooltip.style.opacity = '0';
+    tooltip.style.transform = 'translate(10px, -50%) scale(0.8)';
+  });
+  
+  container.addEventListener('mousemove', (e) => {
+    tooltip.style.transition = 'none';
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+  });
+});
+
 // Portfolio site loaded
 console.log("Portfolio site loaded successfully!");
 
