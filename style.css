@@ -793,7 +793,7 @@ html {
   visibility: hidden;
   opacity: 0;
   color: #1d4ed8;
-  background-color: rgb(226, 233, 255);
+  background-color: rgb(255, 255, 255);
   text-align: center;
   border-radius: 30px;
   padding: 8px 12px;
@@ -816,7 +816,7 @@ html {
   margin-top: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: transparent rgb(226, 233, 255) transparent transparent;
+  border-color: transparent rgb(255, 255, 255) transparent transparent;
 }
 
 .tooltip-container:hover .tooltip-text {
