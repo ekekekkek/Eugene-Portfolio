@@ -175,7 +175,7 @@ if (document.querySelector('.project-sidebar')) {
                    const targetSection = document.getElementById(targetId);
          
                    if (targetSection) {
-                     const offsetTop = targetSection.offsetTop + 50; // Increased offset for higher positioning
+                     const offsetTop = targetSection.offsetTop - 15; // Increased offset for higher positioning
                      window.scrollTo({
                        top: offsetTop,
                        behavior: 'smooth'

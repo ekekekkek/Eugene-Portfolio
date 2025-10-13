@@ -25,7 +25,7 @@
           <a href="playground.html" class="nav-link">Playground</a>
         </li>
         <li class="nav-item">
-          <a href="about.html" class="nav-link">About</a>
+          <a href="index.html#about" class="nav-link">About</a>
         </li>
         <li class="nav-item">
           <a href="assets/Resume.pdf" target="_blank" class="nav-link">Resume</a>
@@ -42,128 +42,118 @@
   <div class="project-layout">
     <!-- Sidebar Navigation -->
     <aside class="project-sidebar">
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="sidebar-nav-item">
-            <a href="playground.html" class="sidebar-nav-link">← Back</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#overview" class="sidebar-nav-link active">Overview</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#planning" class="sidebar-nav-link">Planning</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#api-endpoints" class="sidebar-nav-link">CRUD</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#query-parameters" class="sidebar-nav-link">Query Parameters</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#request-response" class="sidebar-nav-link">Request & Response</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#error" class="sidebar-nav-link">Error & Status Codes</a>
-          </li>
-        </ul>
-      </nav>
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item">
+          <a href="playground.html" class="sidebar-nav-link">← Back</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#overview" class="sidebar-nav-link">Overview</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#planning" class="sidebar-nav-link">Planning</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#api-endpoints" class="sidebar-nav-link">CRUD</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#query-parameters" class="sidebar-nav-link">Query Parameters</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#request-response" class="sidebar-nav-link">Request & Response</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#error" class="sidebar-nav-link">Error & Status Codes</a>
+        </li>
+      </ul>
     </aside>
 
     <!-- Main Content -->
     <main class="project-main">
-      <!-- Hero Section -->
+      <!-- Project Hero -->
       <section class="project-hero">
         <div class="project-hero-container">
           <div class="project-hero-content">
             <div class="project-hero-text">
-              <p>Personal | A weekend in September 2025</p>
+              <p>Personal | One weekend in September 2025</p>
               <h1>API Development practice using Kaggle's Amazon Sales Data</h1>
+              
               <div class="hero-video-container">
-                <img class="hero-image" src="assets/images/API.png" alt="Overview Thumbnail">
+                <img src="assets/images/API.png" alt="Overview Thumbnail" class="hero-video">
               </div>
-
+              
               <div class="project-meta">
                 <div class="meta-item">
                   <strong>Skills:</strong> API Endpoints <br> CRUD Operations <br> Schema Design <br> Pandas
                 </div>
                 <div class="meta-item">
-                    <strong>Languages:</strong> Python <br> SQL
-                  </div>
+                  <strong>Languages:</strong> Python <br> SQL
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Overview Section -->
+      <!-- Project Overview -->
       <section id="overview" class="project-section">
         <div class="project-hero-container">
           <h2>OVERVIEW</h2>
           <h3>Understanding APIs</h3>
-          <p>After onboarding to Dwellci AI, I felt a strong need to understand API development, because every product's success boils down to the API layer. I wanted to start simple, practicing API endpoints and CRUD operations. I used Kaggle's Amazon Sales Data as my data source.</p>
-          <p style="color: #a0a0a0;"><em>This page is essentially for me to record my learning process and reference for my future self, so I apologize if it's too long!</em><p>
+          <p class="sub-text">After onboarding to Dwellci AI, I felt a strong need to understand API development, because every product's success boils down to the API layer. I wanted to start simple, practicing API endpoints and CRUD operations. I used Kaggle's Amazon Sales Data as my data source.</p>
+          <p class="sub-text"><em>This page is essentially for me to record my learning process and reference for my future self, so I apologize if it's too long!</em></p>
         </div>
       </section>
 
       <div class="divider"></div>
 
-      <!-- Planning Section -->
+      <!-- Planning -->
       <section id="planning" class="project-section">
         <div class="project-hero-container">
           <h2>PLANNING</h2>
           <h3>Visualizing the data flow</h3>
-          <p>Figuring out the overall architecture and data flow was the first step. Then, the data structure and the API endpoints.</p>
-
+          <p class="sub-text">Figuring out the overall architecture and data flow was the first step. Then, the data structure and the API endpoints.</p>
+          
           <div class="project-image-section">
-            <img src="assets/images/System Architecture.png" alt="System Architecture" class="project-image">
+              <img src="assets/images/System Architecture.png" alt="System Architecture" class="project-image">
           </div>
-        </div>
 
-        <div class="project-hero-container">
-            <h3>Core components</h3>
-            <h4>Schema(01_schema.sql)</h4>
-              <ul>
-                 <li>Database initialization: creates the actual PostgreSQL tables</li>
-                 <li>Runs during database setup, before any data processing</li>
-                 <pre style="background-color: #f7f7f7; border: 1px solid #dcdcdc; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>CREATE TABLE public.products (
-        product_id TEXT PRIMARY KEY,
-        product_name TEXT NOT NULL,
-        category TEXT,
-        discounted_price TEXT,
-        actual_price TEXT NOT NULL,
-        discount_percentage TEXT,
-        rating TEXT,
-        rating_count TEXT,
-        about_product TEXT,
-        img_link TEXT,
-        product_link TEXT
+          <h3>Core components</h3>
+
+          <h4>Schema(01_schema.sql)</h4>
+          <p class="sub-text">Database initialization: creates the actual PostgreSQL tables. Runs during database setup, before any data processing.</p>
+          <pre><code>CREATE TABLE public.products (
+    product_id TEXT PRIMARY KEY,
+    product_name TEXT NOT NULL,
+    category TEXT,
+    discounted_price TEXT,
+    actual_price TEXT NOT NULL,
+    discount_percentage TEXT,
+    rating TEXT,
+    rating_count TEXT,
+    about_product TEXT,
+    img_link TEXT,
+    product_link TEXT
 );</code></pre>
-             </ul>
 
-             <h4>Models(models.py)</h4>
-              <ul>
-                 <li>SQLAlchemy ORM layer: python classes that represent database tables</li>
-                 <li>Runs when routers need to query/insert data, between database and API logic</li>
-                 <pre style="background-color: #f7f7f7; border: 1px solid #dcdcdc; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>class Product(Base):
-        __tablename__ = "products"
-        product_id = Column(Text, primary_key = True)
-        product_name = Column(Text, nullable=True)
-        category = Column(Text)
-        discounted_price = Column(Text)
-        actual_price = Column(Text)
-        discount_percentage = Column(Text)
-        rating = Column(Text)
-        rating_count = Column(Text)
-        about_product = Column(Text)
-        img_link = Column(Text)
-        product_link = Column(Text)</code></pre>
-              </ul>
+        <h4>Models(models.py)</h4>
+          <p class="sub-text">SQLAlchemy ORM layer: python classes that represent database tables. Runs when routers need to query/insert data, between database and API logic.</p>
+          <pre><code>class Product(Base):
+    __tablename__ = "products"
+    product_id = Column(Text, primary_key = True)
+    product_name = Column(Text, nullable=True)
+    category = Column(Text)
+    discounted_price = Column(Text)
+    actual_price = Column(Text)
+    discount_percentage = Column(Text)
+    rating = Column(Text)
+    rating_count = Column(Text)
+    about_product = Column(Text)
+    img_link = Column(Text)
+    product_link = Column(Text)</code></pre>
 
-             <h4>Routers(products.py)</h4>
-              <ul>
-                 <li>FastAPI layer: handles HTTP requests and logic</li>
-                 <li>Runs when API endpoints are called, between HTTP requests and database operations</li>
-                 <pre style="background-color: #f7f7f7; border: 1px solid #dcdcdc; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>router = APIRouter(prefix="/products", tags=["products"])
+    <h4>Routers(products.py)</h4>
+    <p class="sub-text">FastAPI layer: handles HTTP requests and logic. Runs when API endpoints are called, between HTTP requests and database operations.</p>
+          <pre><code>router = APIRouter(prefix="/products", tags=["products"])
 
 @router.get("/{product_id}", response_model=schemas.ProductOut)
 def get_product(
@@ -175,13 +165,10 @@ def get_product(
     if not prod:
         raise HTTPException(status_code=404, detail="Product not found")
     return prod</code></pre>
-              </ul>
 
-              <h4>Schemas(schemas.py)</h4>
-              <ul>
-                <li>API validation layer: validaets incoming data and formats outgoing data</li>
-                <li>Runs during request/response processing, between HTTP requests and database operations</li>
-                <pre style="background-color: #f7f7f7; border: 1px solid #dcdcdc; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>class ProductOut(BaseModel):
+    <h4>Schemas(schemas.py)</h4>
+          <p class="sub-text">API validation layer: validates incoming data and formats outgoing data. Runs during request/response processing, between HTTP requests and database operations.</p>
+          <pre><code>class ProductOut(BaseModel):
     product_id: str
     product_name: str
     category: str
@@ -193,7 +180,7 @@ def get_product(
     about_product: str
     img_link: str
     product_link: str</code></pre>
-              </ul>
+
         </div>
       </section>
 
@@ -203,7 +190,7 @@ def get_product(
       <section id="implementation" class="project-section">
         <div class="project-hero-container">
           <h2>COMPLETE FLOW & ARCHITECTURE</h2>
-          <p>Once the core components were defined, I was able to put together the complete flow and architecture.</p>
+          <p class="sub-text">Once the core components were defined, I was able to put together the complete flow and architecture.</p>
 
           <div class="project-image-section">
             <img src="assets/images/Data Flow.png" alt="Data Flow" class="project-image">
@@ -213,20 +200,20 @@ def get_product(
 
       <div class="divider"></div>
 
-      <!-- API Section -->
+      <!-- API Endpoints -->
       <section id="api-endpoints" class="project-section">
         <div class="project-hero-container">
           <h2>API ENDPOINTS</h2>
-          <h4>HTTP methods & CRUD operations</h4>
-          <p>HTTP and CRUD are very similar, but there are some differences. HTTP methods are technical protocals, determining how data is transferred over the internet. CRUD are database operations, determining what you do with the data.</p>
+          <h3>HTTP methods & CRUD operations</h3>
+          <p class="sub-text">HTTP and CRUD are very similar, but there are some differences. HTTP methods are technical protocols, determining how data is transferred over the internet. CRUD are database operations, determining what you do with the data.</p>
+          
           <div class="project-image-section">
             <img src="assets/images/HTTP Methods.png" alt="HTTP Methods" class="project-image">
           </div>
           
-          <ul>
-            <li>GET & READ</li>
-            <p>Reads data from database -- no side effects, only returns data<br/>SELECT * FROM products WHERE product_id = ?</p>
-            <pre style="background-color: #e1efff; border: 1px solid #76b6ff; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>@router.get("/{product_id}", response_model=schemas.ProductOut) --> # GET /products/{product_id}
+          <h4>GET & READ</h4>
+              <p class="sub-text">Reads data from database -- no side effects, only returns data<br/>SELECT * FROM products WHERE product_id = ?</p>
+              <pre><code>@router.get("/{product_id}", response_model=schemas.ProductOut) --> # GET /products/{product_id}
 def get_product(                                                --> # Query parameter
     product_id: str,                                            --> # Path parameter, required
     db: Session = Depends(get_db)
@@ -236,29 +223,25 @@ def get_product(                                                --> # Query para
     if not prod:
         raise HTTPException(status_code=404, detail="Product not found")
     return prod</code></pre>
-            <br>
-            <li>POST & CREATE</li>
-            <p>Creates new data in database -- creates a new record<br/>INSERT INTO products (product_id, product_name, category, ...) VALUES (?, ?, ?, ...)</p>
-            <pre style="background-color: #e9ffe9; border: 1px solid #4dbf4d; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>@router.post("/", response_model=schemas.ProductOut) --> # POST /products/{product_id}
+
+    <h4>POST & CREATE</h4>
+              <p class="sub-text">Creates new data in database -- creates a new record<br/>INSERT INTO products (product_id, product_name, category, ...) VALUES (?, ?, ?, ...)</p>
+              <pre><code>@router.post("/", response_model=schemas.ProductOut) --> # POST /products/{product_id}
 def create_product(                                  --> # Query parameter
     payload: schemas.ProductUpdate,                  --> # Request body, contains the field to update
     db: Session = Depends(get_db)
 ):
-    product_data = payload.model_dump()              --> # Convert Pydantic model to dictionary
-    product_data["product_id"] = str(uuid.uuid4())   --> # Generate a unique product_id
-    prod = models.Product(**product_data)            --> # Create a new product object
-                
-    db.add(prod)                                     --> # CREATE
+    prod = models.Product(**payload.model_dump())      --> # CREATE
+    db.add(prod)
     db.commit()
-    db.refresh(prod)
     return prod</code></pre>
-            <br>
-            <li>PUT & UPDATE</li>
-            <p>Updates existing data in database -- updates a record<br/>UPDATE products SET product_name=?, category=?, ... WHERE product_id = ?</p>
-            <pre style="background-color: #fff3df; border: 1px solid #ffcb77; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>@router.put("/{product_id}", response_model=schemas.ProductOut) --> # PUT /products/{product_id}
+
+    <h4>PUT & UPDATE</h4>
+              <p class="sub-text">Updates existing data in database -- updates a record<br/>UPDATE products SET product_name=?, category=?, ... WHERE product_id = ?</p>
+              <pre><code>@router.put("/{product_id}", response_model=schemas.ProductOut) --> # PUT /products/{product_id}
 def update_product(                                             --> # Query parameter
     product_id: str,                                            --> # Path parameter
-    payload: schemas.ProductUpdate,                             --> # Request body, contains the field to update: Client sends JSON in the request body with only the fields they want to change & Server receives the payload and updates only those specific fields
+    payload: schemas.ProductUpdate,                             --> # Request body, contains the field to update
     db: Session = Depends(get_db)
 ):
     prod = db.get(models.Product, product_id)                   --> # READ
@@ -275,10 +258,10 @@ def update_product(                                             --> # Query para
     db.commit()
     db.refresh(prod)
     return prod</code></pre>
-            <br>
-            <li>DELETE & DELETE</li>
-            <p>Deletes data from database -- deletes a record<br/>DELETE FROM products WHERE product_id = ?</p>
-            <pre style="background-color: #ffe4e4; border: 1px solid #ff9191; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>@router.delete("/{product_id}", response_model=schemas.ProductOut) --> # DELETE /products/{product_id}
+
+    <h4>DELETE & DELETE</h4>
+              <p class="sub-text">Deletes data from database -- deletes a record<br/>DELETE FROM products WHERE product_id = ?</p>
+              <pre><code>@router.delete("/{product_id}", response_model=schemas.ProductOut) --> # DELETE /products/{product_id}
 def update_product(                                                --> # Query parameter
     product_id: str,                                               --> # Path parameter
     db: Session = Depends(get_db)
@@ -291,25 +274,26 @@ def update_product(                                                --> # Query p
     db.delete(prod)                                                --> # DELETE
     db.commit()
     return prod</code></pre>
-          </ul>
         </div>
-    </section>
+      </section>
 
       <div class="divider"></div>
 
-    <section id="query-parameters" class="project-section">
-      <div class="project-hero-container">
-        <h2>API ENDPOINTS</h2>
-        <h4>Query parameters & filtering</h4>
-        <ul>
-            <li>FastAPI Query()</li>
-            <p>Query() allows you to define query parameters in the URL. It's a dictionary of key-value pairs.</p>
-            <pre style="background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>def get_products(
+      <!-- Query Parameters Section -->
+       <section id="query-parameters" class="project-section">
+        <div class="project-hero-container">
+            <h2>QUERY PARAMETERS</h2>
+            <h3>Query parameters & filtering</h3>
+
+            <h4>FastAPI Query()</h4>
+              <p class="sub-text">Query() allows you to define query parameters in the URL. It's a dictionary of key-value pairs.</p>
+              <pre><code>def get_products(
     category: Optional[str] = Query(None, description="Category") --> # Optional query parameter
 ):</code></pre>
-            <br>
-            <li>SQLAlchemy .filter()</li>
-            <pre style="background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>def get_products(
+
+            <h4>SQLAlchemy .filter()</h4>
+              <p class="sub-text">Filtering database queries based on parameters.</p>
+              <pre><code>def get_products(
     category: Optional[str] = Query(None, description="Category")
 ):
         
@@ -317,9 +301,10 @@ def update_product(                                                --> # Query p
 
     if category:
         query = query.filter(models.Product.category == category) --> # Filter if exists</code></pre>
-            <br>
-            <li>Optional vs required parameters</li>
-            <pre style="background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>def get_products(
+
+            <h4>Optional vs Required</h4>
+              <p class="sub-text">Understanding the difference between optional and required parameters.</p>
+              <pre><code>def get_products(
     category: Optional[str] = Query(None, description="Category") --> # Optional
 ):
     query = db.query(models.Product)
@@ -329,43 +314,50 @@ def get_product(
     product_id: str,                                              --> # Required
 ):
     prod = db.get(models.Product, product_id)                     --> # Specific product</code></pre>
-      </div>
-    </section>
 
-    <div class="divider"></div>
+        </div>
+       </section>
 
-    <section id="request-response" class="project-section">
+      <div class="divider"></div>
+
+      <!-- Request & Response Section -->
+      <section id="request-response" class="project-section">
         <div class="project-hero-container">
-            <h2>API ENDPOINTS</h2>
-            <h4>Request & Response</h4>
-            <ul>
-                <li>Pydantic BaseModel</li>
-                <p>Pydantic is a library for data validation and parsing. BaseModel is a class that defines the structure of the data.<br>It automatically validates the incoming data and converts its type appropriately. It also serializes python objects to JSON andprovides helpful error messages.</p>
-                <li>Request schemas (ProductCreate, ProductUpdate)</li>
-                <pre style="background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>class ProductCreate(BaseModel):                                              {
+          <h2>REQUEST & RESPONSE</h2>
+          <h3>Pydantic BaseModel</h3>
+          <p class="sub-text">Pydantic is a library for data validation and parsing. BaseModel is a class that defines the structure of the data. It automatically validates the incoming data and converts its type appropriately. It also serializes python objects to JSON and provides helpful error messages.</p>
+
+          <h4>Request schemas (ProductCreate, ProductUpdate)</h4>
+              <p class="sub-text">Defining the structure for incoming data.</p>
+              <pre><code>class ProductCreate(BaseModel):                                              {
     product_name: str = Field(None, description="...")                        "product_name": "Dyson Hair Dryer",
     category: str = Field(None, description="...")                            "category": "Home",
     discounted_price: str = Field(None, description="...")                    "discounted_price": "59.99",
     ...                                                                      }</code></pre>
-                <br>
-                <li>Response schemas (ProductOut)</li>
-                <pre style="background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>class ProductOut(BaseModel):                                                 {
+
+            <h4>Response schemas (ProductOut)</h4>
+            <p class="sub-text">Defining the structure for outgoing data.</p>
+              <pre><code>class ProductOut(BaseModel):                                                 {
     product_id: str = Field(..., description="...")                           "product_id": "prod_123",
     product_name: str = Field(None, description="...")                        "product_name": "Dyson Hair Dryer",
     category: str = Field(None, description="...")                            "category": "Home",
     discounted_price: str = Field(None, description="...")                    "discounted_price": "59.99",
     actual_price: str = Field(None, description="...")                        "actual_price": "149.99",
     ...                                                                      }</code></pre>
+
         </div>
-    </section>
+      </section>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <section id="error" class="project-section">
+      <!-- Error Handling Section -->
+      <section id="error" class="project-section">
         <div class="project-hero-container">
-            <h2>API ENDPOINTS</h2>
-            <h4>Error handling & status codes</h4>
-            <table class="status-table">
+          <h2>ERROR HANDLING</h2>
+          <h3>Error handling & status codes</h3>
+          
+          <div class="project-image-section">
+              <table class="status-table">
               <thead>
                 <tr>
                   <th>Status Code</th>
@@ -416,11 +408,11 @@ def get_product(
                 </tr>
               </tbody>
             </table>
+          </div>
 
-            <br>
-
-            <h4>Quick Debugging Guide</h4>
-            <table class="debug-table">
+          <h3>Quick Debugging Guide</h3>
+          <div class="project-image-section">
+              <table class="debug-table">
               <thead>
                 <tr>
                   <th>Error Type</th>
@@ -471,9 +463,9 @@ def get_product(
                 </tr>
               </tbody>
             </table>
-            
+          </div>
         </div>
-    </section>
+      </section>
     </main>
   </div>
 
