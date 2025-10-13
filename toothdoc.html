@@ -9,543 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* Make top navbar non-sticky */
-    .navbar {
-      position: relative;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-
-    /* Project Layout with Sidebar */
-    .project-layout {
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* Sidebar Navigation */
-    .project-sidebar {
-      position: sticky;
-      left: 0;
-      top: 0;
-      width: 280px;
-      height: 100vh;
-      background: #ffffff;
-      padding: 80px 0 40px 0;
-      overflow-y: auto;
-      z-index: 100;
-    }
-
-    .sidebar-nav {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sidebar-nav-item {
-      margin: 0;
-      margin-bottom: -8px;
-    }
-
-    .sidebar-nav-link {
-      display: block;
-      padding: 16px 32px;
-      color: #b7b7b7;
-      text-decoration: none;
-      font-weight: 400;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      border-left: 3px solid transparent;
-    }
-
-    .sidebar-nav-link:hover {
-      color: #64748b;
-    }
-
-    .sidebar-nav-link.active {
-      color: #64748b;
-    }
-
-    /* Main Content Area */
-    .project-main {
-      flex: 1;
-    }
-
-    .project-hero {
-      padding: 80px 0 0 0;
-      background: #ffffff;
-    }
-    
-    .project-hero-container {
-      max-width: 950px;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .project-hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    
-    .project-hero-text h1 {
-      font-size: 3rem;
-      font-weight: 500;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      color: #1e293b;
-      min-width: 950px;
-    }
-    
-    .project-hero-text p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #64748b;
-      margin-bottom: 30px;
-    }
-    
-    .hero-video-container {
-      width: 100%;
-      margin: 30px 0;
-      overflow: hidden;
-    }
-    
-    .hero-video {
-      width: 100%;
-      max-width: 950px;
-      height: auto;
-      display: block;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-    
-    .project-meta {
-      display: flex;
-      gap: 70px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-    
-    .meta-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 5px;
-      font-size: 0.9rem;
-      color: #64748b;
-    }
-    
-    .meta-item strong {
-      color: #1e293b;
-    }
-    
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #64748b;
-      text-decoration: none;
-      font-weight: 500;
-      margin-bottom: 40px;
-      transition: color 0.3s ease;
-    }
-    
-    .back-link:hover {
-      color: #1e293b;
-    }
-    
-    .project-section {
-      padding: 80px 0;
-      max-width: 950px;
-      margin: 0;
-    }
-    
-    .project-section:nth-child(even) {
-      background: #ffffff;
-    }
-    
-    .project-section h2 {
-      font-size: 1rem;
-      font-weight: 400;
-      margin-bottom: 20px;
-      margin-top: 30px;
-      color: #1e293b8f;
-    }
-    
-    .project-section h3 {
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin-bottom: 20px;
-      color: #1e293b;
-    }
-
-    .project-section h4 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin-bottom: 15px;
-      color: #1e293b;
-    }
-    
-    .project-section p {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: #475569;
-      margin-bottom: 20px;
-    }
-
-    .project-section p.sub-text {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: #475569a2;
-      margin-bottom: 20px;
-      padding-top: 0;
-    }
-
-    .project-image-section {
-      margin: 40px 0;
-      max-width: 2000px;
-    }
-
-    .project-image-section .project-image {
-      width: 100%;
-      height: auto;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .project-image-section .project-video {
-      width: 100%;
-      height: auto;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .three-image-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin: 40px 0;
-    }
-
-    .three-image-row .project-image {
-      width: 100%;
-      height: auto;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .divider {
-      max-width: 950px;
-      height: 1px;
-      background: rgba(0, 0, 0, 0.1);
-      margin: 30px 0;
-    }
-
-    .horizontal-content-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      margin: 40px 0;
-    }
-
-    .row-image {
-      width: 100%;
-    }
-
-    .row-img {
-      width: 100%;
-      height: auto;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .row-description {
-      padding-right: 20px;
-    }
-
-    @media (max-width: 768px) {
-      .horizontal-content-row {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .row-description {
-        padding-left: 0;
-      }
-    }
-    
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 50px;
-      margin-top: 40px;
-    }
-    
-    .project-image {
-      width: 100%;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 50px;
-      margin-top: 40px;
-    }
-    
-    .process-step {
-      background: white;
-      border-radius: 12px;
-    }
-    
-    .process-step h4 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin-bottom: 15px;
-      color: #1e293b;
-    }
-    
-    .process-step p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #64748b;
-    }
-    
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-    }
-    
-    .tech-tag {
-      background: #e2e8f0;
-      color: #475569;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-    
-    .outcomes {
-      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-      color: white;
-      padding: 60px 0;
-    }
-    
-    .outcomes h2 {
-      color: white;
-    }
-    
-    .outcomes p {
-      color: #cbd5e1;
-    }
-    
-    .outcome-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 40px;
-      margin-top: 40px;
-    }
-    
-    .outcome-stat {
-      text-align: center;
-    }
-    
-    .outcome-stat h3 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: white;
-    }
-    
-    .outcome-stat p {
-      font-size: 1.1rem;
-      color: #cbd5e1;
-    }
-
-    /* Section IDs for smooth scrolling */
-    #overview, #value-proposition, #design-process, #design-exploration, #design-system, #final-designs, #lessons {
-      scroll-margin-top: 100px;
-    }
-    
-    @media (max-width: 768px) {
-      .project-sidebar {
-        display: none;
-      }
-      
-      .project-main {
-        margin-left: 0;
-      }
-      
-      .project-hero {
-        padding: 60px 0 0 0;
-      }
-      
-      .project-hero-container {
-        max-width: 100%;
-        padding: 0 1rem;
-      }
-      
-      .project-hero-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      
-      .project-hero-text h1 {
-        font-size: 2rem;
-        min-width: auto;
-        line-height: 1.2;
-      }
-      
-      .project-section {
-        padding: 40px 1rem;
-        max-width: 100%;
-      }
-      
-      .project-section h2 {
-        font-size: 1.5rem;
-        margin-top: 20px;
-      }
-      
-      .project-section h3 {
-        font-size: 1.3rem;
-      }
-      
-      .project-meta {
-        flex-direction: column;
-        gap: 15px;
-      }
-      
-      .hero-video-container {
-        margin: 20px 0;
-      }
-      
-      .hero-video {
-        max-width: 100%;
-      }
-      
-      .project-image-section {
-        margin: 30px 0;
-      }
-      
-      .project-image-section .project-image,
-      .project-image-section .project-video {
-        width: 100%;
-        max-width: 100%;
-      }
-      
-      .horizontal-content-row {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        margin: 30px 0;
-      }
-      
-      .row-description {
-        padding-right: 0;
-      }
-      
-      .project-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      
-      .process-steps {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      
-      .three-image-row {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .project-hero-container {
-        padding: 0 0.75rem;
-      }
-      
-      .project-section {
-        padding: 30px 0.75rem;
-      }
-      
-      .project-hero-text h1 {
-        font-size: 1.8rem;
-      }
-      
-      .project-section h2 {
-        font-size: 1.3rem;
-      }
-      
-      .project-section h3 {
-        font-size: 1.2rem;
-      }
-      
-      .project-section h4 {
-        font-size: 1.1rem;
-      }
-      
-      .project-section p {
-        font-size: 0.95rem;
-      }
-      
-      .project-meta {
-        gap: 10px;
-      }
-      
-      .meta-item {
-        font-size: 0.85rem;
-      }
-      
-      .tech-tag {
-        font-size: 0.8rem;
-        padding: 6px 12px;
-      }
-    }
-    
-    @media (max-width: 360px) {
-      .project-hero-container {
-        padding: 0 0.5rem;
-      }
-      
-      .project-section {
-        padding: 25px 0.5rem;
-      }
-      
-      .project-hero-text h1 {
-        font-size: 1.6rem;
-      }
-      
-      .project-section h2 {
-        font-size: 1.2rem;
-      }
-      
-      .project-section h3 {
-        font-size: 1.1rem;
-      }
-      
-      .project-section h4 {
-        font-size: 1rem;
-      }
-      
-      .project-section p {
-        font-size: 0.9rem;
-      }
-      
-      .meta-item {
-        font-size: 0.8rem;
-      }
-      
-      .tech-tag {
-        font-size: 0.75rem;
-        padding: 5px 10px;
-      }
-    }
-  </style>
 </head>
 <body>
   <!-- Navigation -->
@@ -642,27 +105,29 @@
 
       <!-- Project Overview -->
       <section id="overview" class="project-section">
-        <h2>OVERVIEW</h2>
-        <h3>ToothDoc is a comprehensive B2B platform designed to streamline tedious dental referral operations into easy, quick flows.</h3>
-        <p class="sub-text">During the internship, I had the chance to lead design on the end-to-end journey of the MVP, before user testing.</p>
- 
-        <div class="project-image-section">
-          <img src="assets/images/ToothDoc Thumbnail.png" alt="ToothDoc platform overview" class="project-image">
-        </div>
+        <div class="project-hero-container">
+          <h2>OVERVIEW</h2>
+          <h3>ToothDoc is a comprehensive B2B platform designed to streamline tedious dental referral operations into easy, quick flows.</h3>
+          <p class="sub-text">During the internship, I had the chance to lead design on the end-to-end journey of the MVP, before user testing.</p>
+       
+          <div class="project-image-section">
+            <img src="assets/images/ToothDoc Thumbnail.png" alt="ToothDoc platform overview" class="project-image">
+          </div>
 
-        <h2>OUTCOMES</h2>
-        <div class="process-steps">
-          <div class="process-step">
-            <h4>Complete MVP Design</h4>
-            <p class="sub-text">Delivered comprehensive design system and user flows</p>
-          </div>
-          <div class="process-step">
-            <h4>Internal Documentation</h4>
-            <p class="sub-text">Created internal documentation for future initiatives</p>
-          </div>
-          <div class="process-step">
-            <h4>Design System</h4>
-            <p class="sub-text">Established scalable design patterns and components</p>
+          <h2>OUTCOMES</h2>
+          <div class="process-steps">
+            <div class="process-step">
+              <h4>Complete MVP Design</h4>
+              <p class="sub-text">Delivered comprehensive design system and user flows</p>
+            </div>
+            <div class="process-step">
+              <h4>Internal Documentation</h4>
+              <p class="sub-text">Created internal documentation for future initiatives</p>
+            </div>
+            <div class="process-step">
+              <h4>Design System</h4>
+              <p class="sub-text">Established scalable design patterns and components</p>
+            </div>
           </div>
         </div>
       </section>
@@ -671,30 +136,32 @@
 
       <!-- Value Proposition -->
       <section id="value-proposition" class="project-section">
-        <h2>VALUE PROPOSITION</h2>
-        <h3>Founder's firsthand experience of pain points in dental referral operations</h3>
-        <p class="sub-text">As a dentist herself, she saw a problem in the dental referral process. Many still operate with pen and paper, which often gets lost or misplaced. This slows down the referral process and can lead to missed opportunities.</p>
-        
-        <div class="project-image-section">
-          <div class="three-image-row">
-            <img src="assets/images/Value1.png" alt="Painpoint1" class="project-image">
-            <img src="assets/images/Value2.png" alt="Painpoint2" class="project-image">
-            <img src="assets/images/Value3.png" alt="Painpoint3" class="project-image">
+        <div class="project-hero-container">
+          <h2>VALUE PROPOSITION</h2>
+          <h3>Founder's firsthand experience of pain points in dental referral operations</h3>
+          <p class="sub-text">As a dentist herself, she saw a problem in the dental referral process. Many still operate with pen and paper, which often gets lost or misplaced. This slows down the referral process and can lead to missed opportunities.</p>
+          
+          <div class="project-image-section">
+            <div class="three-image-row">
+              <img src="assets/images/Value1.png" alt="Painpoint1" class="project-image">
+              <img src="assets/images/Value2.png" alt="Painpoint2" class="project-image">
+              <img src="assets/images/Value3.png" alt="Painpoint3" class="project-image">
+            </div>
           </div>
-        </div>
 
-        <div class="project-grid">
-          <div>
-            <h4>Flexibility</h4>
-            <p class="sub-text">A referral network with various specialties, locations, and availability.</p>
-          </div>
-          <div>
-            <h4>Convenient Tracking</h4>
-            <p class="sub-text">With an online database, losing a paper ticket is no longer a problem.</p>
-          </div>
-          <div>
-            <h4>Easy Management</h4>
-            <p class="sub-text">No longer a fragmented system of countless paper tickets, for dentists.</p>
+          <div class="project-grid">
+            <div>
+              <h4>Flexibility</h4>
+              <p class="sub-text">A referral network with various specialties, locations, and availability.</p>
+            </div>
+            <div>
+              <h4>Convenient Tracking</h4>
+              <p class="sub-text">With an online database, losing a paper ticket is no longer a problem.</p>
+            </div>
+            <div>
+              <h4>Easy Management</h4>
+              <p class="sub-text">No longer a fragmented system of countless paper tickets, for dentists.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -703,36 +170,39 @@
 
       <!-- Design Process -->
       <section id="design-process" class="project-section">
-        <h2>DESIGN PROCESS</h2>
-        <p>My design approach focused on translating the founder's visions into an intuitive interface. In weekly meetings, we validated the core functionality and features, and discussed the design direction.</p>
-        
-        <div class="project-image-section">
-          <img src="assets/images/Core functionality.png" alt="ToothDoc core functionality" class="project-image">
-        </div>
+        <div class="project-hero-container">
+          <h2>DESIGN PROCESS</h2>
+          <p>My design approach focused on translating the founder's visions into an intuitive interface. In weekly meetings, we validated the core functionality and features, and discussed the design direction.</p>
+          
+          <div class="project-image-section">
+            <img src="assets/images/Core functionality.png" alt="ToothDoc core functionality" class="project-image">
+          </div>
 
-        <p>We agreed on the priority of Dashboard and Referral, as they would be the most used and helpful features for dentists.</p>
-        <div class="project-image-section">
-          <img src="assets/images/Information architecture.png" alt="ToothDoc structure" class="project-image">
+          <p>We agreed on the priority of Dashboard and Referral, as they would be the most used and helpful features for dentists.</p>
+          <div class="project-image-section">
+            <img src="assets/images/Information architecture.png" alt="ToothDoc structure" class="project-image">
+          </div>
         </div>
-
       </section>
 
       <div class="divider"></div>
 
       <!-- Design Exploration -->
       <section id="design-exploration" class="project-section">
-        <h2>DESIGN EXPLORATION</h2>
-        <h3>Visualizing referral tracker data</h3>
-        <p>A person would have 6 different status regarding the referrals. I had to come up with a clear and intuitive way to categorize and visualize the data. I explored the usage of icons, colors, and shapes to distinguish the statuses.</p>
-        <p>Upon exploring and discussing with the team, we decided to use a combination of icons and colors to distinguish the statuses. This was mainly because some colors have intuitive meanings, and well-chosen icons are recognizable. We also decided to incorporate a pie chart to visualize the proportions of each status – with a plan to test if the users find such visualization helpful.</p>
-        <div class="project-image-section">
-          <img src="assets/images/Tracker Exploration.png" alt="ToothDoc design exploration" class="project-image">
-        </div>
-        
-        <h3>Highlighting the wins</h3>
-        <p>By the end of the internship, I pitched an idea to emphasize ToothDoc's value propositions. By displaying the direct benefit of ToothDoc's network and referral system, I sought for ways that would encourage customer retention.</p>
-        <div class="project-image-section">
-          <img src="assets/images/Monthly.png" alt="Value highlighting suggestion" class="project-image">
+        <div class="project-hero-container">
+          <h2>DESIGN EXPLORATION</h2>
+          <h3>Visualizing referral tracker data</h3>
+          <p>A person would have 6 different status regarding the referrals. I had to come up with a clear and intuitive way to categorize and visualize the data. I explored the usage of icons, colors, and shapes to distinguish the statuses.</p>
+          <p>Upon exploring and discussing with the team, we decided to use a combination of icons and colors to distinguish the statuses. This was mainly because some colors have intuitive meanings, and well-chosen icons are recognizable. We also decided to incorporate a pie chart to visualize the proportions of each status – with a plan to test if the users find such visualization helpful.</p>
+          <div class="project-image-section">
+            <img src="assets/images/Tracker Exploration.png" alt="ToothDoc design exploration" class="project-image">
+          </div>
+          
+          <h3>Highlighting the wins</h3>
+          <p>By the end of the internship, I pitched an idea to emphasize ToothDoc's value propositions. By displaying the direct benefit of ToothDoc's network and referral system, I sought for ways that would encourage customer retention.</p>
+          <div class="project-image-section">
+            <img src="assets/images/Monthly.png" alt="Value highlighting suggestion" class="project-image">
+          </div>
         </div>
       </section>
 
@@ -751,45 +221,47 @@
 
       <!-- Final Designs -->
       <section id="final-designs" class="project-section">
-        <h2>FINAL DESIGNS</h2>
-        <div class="horizontal-content-row">
-          <div class="row-description">
-            <h4>Onboarding</h4>
+        <div class="project-hero-container">
+          <h2>FINAL DESIGNS</h2>
+          <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Onboarding</h4>
+            </div>
+
+            <div class="row-image">
+             <img src="assets/images/Onboarding.png" alt="ToothDoc onboarding" class="row-img">
+           </div>
           </div>
 
-          <div class="row-image">
-           <img src="assets/images/Onboarding.png" alt="ToothDoc onboarding" class="row-img">
-         </div>
-        </div>
+          <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Dashboard</h4>
+            </div>
 
-        <div class="horizontal-content-row">
-          <div class="row-description">
-            <h4>Dashboard</h4>
+            <div class="row-image">
+             <img src="assets/images/Dashboard.png" alt="ToothDoc dashboard" class="row-img">
+           </div>
           </div>
 
-          <div class="row-image">
-           <img src="assets/images/Dashboard.png" alt="ToothDoc dashboard" class="row-img">
-         </div>
-        </div>
+          <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Referral Flow</h4>
+            </div>
 
-        <div class="horizontal-content-row">
-          <div class="row-description">
-            <h4>Referral Flow</h4>
+            <div class="row-image">
+             <img src="assets/images/Referral start.png" alt="ToothDoc referral flow" class="row-img">
+           </div>
           </div>
 
-          <div class="row-image">
-           <img src="assets/images/Referral start.png" alt="ToothDoc referral flow" class="row-img">
-         </div>
-        </div>
+          <div class="horizontal-content-row">
+            <div class="row-description">
+              <h4>Quick Referral</h4>
+            </div>
 
-        <div class="horizontal-content-row">
-          <div class="row-description">
-            <h4>Quick Referral</h4>
+            <div class="row-image">
+             <img src="assets/images/Quick Referral.png" alt="ToothDoc quick referral" class="row-img">
+           </div>
           </div>
-
-          <div class="row-image">
-           <img src="assets/images/Quick Referral.png" alt="ToothDoc quick referral" class="row-img">
-         </div>
         </div>
       </section>
 
@@ -797,19 +269,21 @@
 
       <!-- Takeaways -->
       <section id="lessons" class="project-section">
-        <h2>TAKEAWAYS</h2>
-        <div class="project-grid">
-          <div>
-            <h4>Early & Frequent Communication</h4>
-            <p class="sub-text">Especially for the 0 to 1 of an early stage startup, communication is key. It's important to overload the communication to align ourselves with the founders' vision.</p>
-          </div>
-          <div>
-            <h4>Scalable Design for Future Iterations</h4>
-            <p class="sub-text">Often times, the design itself isn't final. It's important to design for scalability and future iterations.</p>
-          </div>
-          <div>
-            <h4>Design & Development</h4>
-            <p class="sub-text">I learned that they flow together. It's important to make informed design decisions, in terms of technicality, to ship things faster.</p>
+        <div class="project-hero-container">
+          <h2>TAKEAWAYS</h2>
+          <div class="project-grid">
+            <div>
+              <h4>Early & Frequent Communication</h4>
+              <p class="sub-text">Especially for the 0 to 1 of an early stage startup, communication is key. It's important to overload the communication to align ourselves with the founders' vision.</p>
+            </div>
+            <div>
+              <h4>Scalable Design for Future Iterations</h4>
+              <p class="sub-text">Often times, the design itself isn't final. It's important to design for scalability and future iterations.</p>
+            </div>
+            <div>
+              <h4>Design & Development</h4>
+              <p class="sub-text">I learned that they flow together. It's important to make informed design decisions, in terms of technicality, to ship things faster.</p>
+            </div>
           </div>
         </div>
       </section>

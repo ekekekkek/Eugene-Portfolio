@@ -42,31 +42,29 @@
   <div class="project-layout">
     <!-- Sidebar Navigation -->
     <aside class="project-sidebar">
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="sidebar-nav-item">
-            <a href="playground.html" class="sidebar-nav-link">← Back</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#overview" class="sidebar-nav-link active">Overview</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#planning" class="sidebar-nav-link">Planning</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#api-endpoints" class="sidebar-nav-link">CRUD</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#query-parameters" class="sidebar-nav-link">Query Parameters</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#request-response" class="sidebar-nav-link">Request & Response</a>
-          </li>
-          <li class="sidebar-nav-item">
-            <a href="#error" class="sidebar-nav-link">Error & Status Codes</a>
-          </li>
-        </ul>
-      </nav>
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item">
+          <a href="playground.html" class="sidebar-nav-link">← Back</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#overview" class="sidebar-nav-link active">Overview</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#planning" class="sidebar-nav-link">Planning</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#api-endpoints" class="sidebar-nav-link">CRUD</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#query-parameters" class="sidebar-nav-link">Query Parameters</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#request-response" class="sidebar-nav-link">Request & Response</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a href="#error" class="sidebar-nav-link">Error & Status Codes</a>
+        </li>
+      </ul>
     </aside>
 
     <!-- Main Content -->
@@ -76,7 +74,7 @@
         <div class="project-hero-container">
           <div class="project-hero-content">
             <div class="project-hero-text">
-              <p>Personal | A weekend in September 2025</p>
+              <p>Personal | One weekend in September 2025</p>
               <h1>API Development practice using Kaggle's Amazon Sales Data</h1>
               <div class="hero-video-container">
                 <img class="hero-image" src="assets/images/API.png" alt="Overview Thumbnail">
@@ -101,7 +99,7 @@
           <h2>OVERVIEW</h2>
           <h3>Understanding APIs</h3>
           <p>After onboarding to Dwellci AI, I felt a strong need to understand API development, because every product's success boils down to the API layer. I wanted to start simple, practicing API endpoints and CRUD operations. I used Kaggle's Amazon Sales Data as my data source.</p>
-          <p style="color: #a0a0a0;"><em>This page is essentially for me to record my learning process and reference for my future self, so I apologize if it's too long!</em><p>
+          <p class="sub-text"><em>This page is essentially for me to record my learning process and reference for my future self, so I apologize if it's too long!</em></p>
         </div>
       </section>
 
@@ -125,7 +123,7 @@
               <ul>
                  <li>Database initialization: creates the actual PostgreSQL tables</li>
                  <li>Runs during database setup, before any data processing</li>
-                 <pre style="background-color: #f7f7f7; border: 1px solid #dcdcdc; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>CREATE TABLE public.products (
+                 <pre><code>CREATE TABLE public.products (
         product_id TEXT PRIMARY KEY,
         product_name TEXT NOT NULL,
         category TEXT,
@@ -144,7 +142,7 @@
               <ul>
                  <li>SQLAlchemy ORM layer: python classes that represent database tables</li>
                  <li>Runs when routers need to query/insert data, between database and API logic</li>
-                 <pre style="background-color: #f7f7f7; border: 1px solid #dcdcdc; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>class Product(Base):
+                 <pre><code>class Product(Base):
         __tablename__ = "products"
         product_id = Column(Text, primary_key = True)
         product_name = Column(Text, nullable=True)
@@ -163,7 +161,7 @@
               <ul>
                  <li>FastAPI layer: handles HTTP requests and logic</li>
                  <li>Runs when API endpoints are called, between HTTP requests and database operations</li>
-                 <pre style="background-color: #f7f7f7; border: 1px solid #dcdcdc; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>router = APIRouter(prefix="/products", tags=["products"])
+                 <pre><code>router = APIRouter(prefix="/products", tags=["products"])
 
 @router.get("/{product_id}", response_model=schemas.ProductOut)
 def get_product(
@@ -181,7 +179,7 @@ def get_product(
               <ul>
                 <li>API validation layer: validaets incoming data and formats outgoing data</li>
                 <li>Runs during request/response processing, between HTTP requests and database operations</li>
-                <pre style="background-color: #f7f7f7; border: 1px solid #dcdcdc; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>class ProductOut(BaseModel):
+                <pre><code>class ProductOut(BaseModel):
     product_id: str
     product_name: str
     category: str
@@ -226,7 +224,7 @@ def get_product(
           <ul>
             <li>GET & READ</li>
             <p>Reads data from database -- no side effects, only returns data<br/>SELECT * FROM products WHERE product_id = ?</p>
-            <pre style="background-color: #e1efff; border: 1px solid #76b6ff; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>@router.get("/{product_id}", response_model=schemas.ProductOut) --> # GET /products/{product_id}
+            <pre><code>@router.get("/{product_id}", response_model=schemas.ProductOut) --> # GET /products/{product_id}
 def get_product(                                                --> # Query parameter
     product_id: str,                                            --> # Path parameter, required
     db: Session = Depends(get_db)
@@ -239,7 +237,7 @@ def get_product(                                                --> # Query para
             <br>
             <li>POST & CREATE</li>
             <p>Creates new data in database -- creates a new record<br/>INSERT INTO products (product_id, product_name, category, ...) VALUES (?, ?, ?, ...)</p>
-            <pre style="background-color: #e9ffe9; border: 1px solid #4dbf4d; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>@router.post("/", response_model=schemas.ProductOut) --> # POST /products/{product_id}
+            <pre><code>@router.post("/", response_model=schemas.ProductOut) --> # POST /products/{product_id}
 def create_product(                                  --> # Query parameter
     payload: schemas.ProductUpdate,                  --> # Request body, contains the field to update
     db: Session = Depends(get_db)
@@ -255,10 +253,10 @@ def create_product(                                  --> # Query parameter
             <br>
             <li>PUT & UPDATE</li>
             <p>Updates existing data in database -- updates a record<br/>UPDATE products SET product_name=?, category=?, ... WHERE product_id = ?</p>
-            <pre style="background-color: #fff3df; border: 1px solid #ffcb77; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>@router.put("/{product_id}", response_model=schemas.ProductOut) --> # PUT /products/{product_id}
+            <pre><code>@router.put("/{product_id}", response_model=schemas.ProductOut) --> # PUT /products/{product_id}
 def update_product(                                             --> # Query parameter
     product_id: str,                                            --> # Path parameter
-    payload: schemas.ProductUpdate,                             --> # Request body, contains the field to update: Client sends JSON in the request body with only the fields they want to change & Server receives the payload and updates only those specific fields
+    payload: schemas.ProductUpdate,                             --> # Request body, contains the field to update
     db: Session = Depends(get_db)
 ):
     prod = db.get(models.Product, product_id)                   --> # READ
@@ -278,7 +276,7 @@ def update_product(                                             --> # Query para
             <br>
             <li>DELETE & DELETE</li>
             <p>Deletes data from database -- deletes a record<br/>DELETE FROM products WHERE product_id = ?</p>
-            <pre style="background-color: #ffe4e4; border: 1px solid #ff9191; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>@router.delete("/{product_id}", response_model=schemas.ProductOut) --> # DELETE /products/{product_id}
+            <pre><code>@router.delete("/{product_id}", response_model=schemas.ProductOut) --> # DELETE /products/{product_id}
 def update_product(                                                --> # Query parameter
     product_id: str,                                               --> # Path parameter
     db: Session = Depends(get_db)
@@ -304,12 +302,12 @@ def update_product(                                                --> # Query p
         <ul>
             <li>FastAPI Query()</li>
             <p>Query() allows you to define query parameters in the URL. It's a dictionary of key-value pairs.</p>
-            <pre style="background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>def get_products(
+            <pre><code>def get_products(
     category: Optional[str] = Query(None, description="Category") --> # Optional query parameter
 ):</code></pre>
             <br>
             <li>SQLAlchemy .filter()</li>
-            <pre style="background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>def get_products(
+            <pre><code>def get_products(
     category: Optional[str] = Query(None, description="Category")
 ):
         
@@ -319,7 +317,7 @@ def update_product(                                                --> # Query p
         query = query.filter(models.Product.category == category) --> # Filter if exists</code></pre>
             <br>
             <li>Optional vs required parameters</li>
-            <pre style="background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>def get_products(
+            <pre><code>def get_products(
     category: Optional[str] = Query(None, description="Category") --> # Optional
 ):
     query = db.query(models.Product)
@@ -342,14 +340,14 @@ def get_product(
                 <li>Pydantic BaseModel</li>
                 <p>Pydantic is a library for data validation and parsing. BaseModel is a class that defines the structure of the data.<br>It automatically validates the incoming data and converts its type appropriately. It also serializes python objects to JSON andprovides helpful error messages.</p>
                 <li>Request schemas (ProductCreate, ProductUpdate)</li>
-                <pre style="background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>class ProductCreate(BaseModel):                                              {
+                <pre><code>class ProductCreate(BaseModel):                                              {
     product_name: str = Field(None, description="...")                        "product_name": "Dyson Hair Dryer",
     category: str = Field(None, description="...")                            "category": "Home",
     discounted_price: str = Field(None, description="...")                    "discounted_price": "59.99",
     ...                                                                      }</code></pre>
                 <br>
                 <li>Response schemas (ProductOut)</li>
-                <pre style="background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 6px; padding: 16px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; line-height: 1.45; overflow-x: auto;"><code>class ProductOut(BaseModel):                                                 {
+                <pre><code>class ProductOut(BaseModel):                                                 {
     product_id: str = Field(..., description="...")                           "product_id": "prod_123",
     product_name: str = Field(None, description="...")                        "product_name": "Dyson Hair Dryer",
     category: str = Field(None, description="...")                            "category": "Home",
