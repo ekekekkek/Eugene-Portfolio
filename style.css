@@ -138,6 +138,71 @@ body {
   /* padding: 0 2rem; */
 }
 
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+}
+
+.hero-left {
+  /* Left column styling - inherits from existing hero styles */
+}
+
+.hero-right {
+  /* Right column styling - inherits from existing hero styles */
+  max-width: 500px;
+}
+
+.experience-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.experience-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+
+.experience-item:last-child {
+  margin-bottom: 0;
+}
+
+.experience-date {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 400;
+  min-width: 50px;
+}
+
+.experience-company {
+  color: #1a1a1a;
+  font-weight: 400;
+  font-size: 1rem;
+  flex: 1;
+  text-align: left;
+  max-width: 200px;
+}
+
+.experience-role {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 400;
+  width: 200px;
+  text-align: left;
+}
+
 .hero-title {
   font-size: clamp(2rem, 4vw, 2.5rem);
   font-weight: 600;
@@ -149,7 +214,7 @@ body {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-size: 1.1rem;
   color: #666;
   max-width: 900px;
   animation: fadeInUp 1s ease-out 0.2s both;
@@ -593,6 +658,11 @@ html {
     padding: 0 1rem;
   }
 
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
   .work-grid,
   .playground-grid {
     grid-template-columns: 1fr;
@@ -659,6 +729,36 @@ html {
 
   .hero-container {
     padding: 0 0.75rem;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .experience-title {
+    font-size: 1.3rem;
+  }
+
+  .experience-item {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    border: 1px solid green;
+  }
+
+  .experience-date,
+  .experience-company,
+  .experience-role {
+    min-width: auto;
+    text-align: left;
+  }
+
+  .experience-company {
+    font-weight: 600;
+    color: #1a1a1a;
   }
 
   .hero-title {
@@ -728,6 +828,36 @@ html {
 
   .hero-container {
     padding: 0 0.5rem;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .experience-title {
+    font-size: 1.2rem;
+  }
+
+  .experience-item {
+    margin-bottom: 0.5rem;
+    padding: 0.4rem 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .experience-date,
+  .experience-company,
+  .experience-role {
+    min-width: auto;
+    text-align: left;
+    font-size: 0.85rem;
+  }
+
+  .experience-company {
+    font-weight: 600;
+    color: #1a1a1a;
   }
 
   .hero-title {
