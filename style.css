@@ -126,7 +126,7 @@ body {
   /*min-height: 50vh; */
   display: flex;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 10rem;
   background: #fff;
   padding-bottom: 0;
 }
@@ -152,6 +152,11 @@ body {
 .hero-right {
   /* Right column styling - inherits from existing hero styles */
   max-width: 500px;
+}
+
+.hero-name {
+  font-weight: 600;
+  color: #0059ff;
 }
 
 .experience-title {
@@ -270,7 +275,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 1.7rem;
-  margin-top: 2rem;
+  margin-top: 0;
   justify-content: center;
 }
 
