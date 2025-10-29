@@ -31,6 +31,11 @@
           <a href="assets/Resume.pdf" target="_blank" class="nav-link">Resume</a>
         </li>
       </ul>
+      <div class="chat-toggle">
+        <span class="chat-icon">✨</span>
+        <span class="chat-label">EUGENEAI</span>
+        <span class="chat-close-icon">×</span>
+      </div>
       <div class="hamburger">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -38,6 +43,27 @@
       </div>
     </div>
   </nav>
+
+  <!-- Chat Panel -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <h3>Hey, what would you like to know?</h3>
+    </div>
+    <div class="chat-suggestions">
+      <button class="suggestion-btn">What projects have you worked on?</button>
+      <button class="suggestion-btn">What do you do for fun?</button>
+      <button class="suggestion-btn">What inspires you?</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input-container">
+      <input type="text" class="chat-input" placeholder="Ask about me..." id="chatInput">
+      <button class="chat-send-btn" id="chatSendBtn">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <section id="home" class="hero">
@@ -176,5 +202,6 @@
   </section>
 
   <script src="script.js"></script>
+  <script src="chat.js"></script>
 </body>
 </html>
