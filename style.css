@@ -46,6 +46,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 70px;
+  gap: 1rem;
 }
 
 .nav-logo a {
@@ -64,6 +65,8 @@ body {
   display: flex;
   list-style: none;
   gap: 2rem;
+  flex: 1;
+  justify-content: center;
 }
 
 .nav-item {
@@ -106,6 +109,195 @@ body {
   width: 100%;
 }
 
+/* Chat Toggle Button */
+.chat-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.chat-toggle:hover {
+  background-color: rgba(0, 89, 255, 0.05);
+  color: #0059ff;
+}
+
+.chat-icon {
+  font-size: 1.2rem;
+}
+
+.chat-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.chat-close-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  display: none;
+  opacity: 1;
+}
+
+.chat-toggle.active .chat-label,
+.chat-toggle.active .chat-icon {
+  display: none;
+}
+
+.chat-toggle.active .chat-close-icon {
+  display: block;
+}
+
+/* Chat Panel */
+.chat-panel {
+  position: fixed;
+  right: -400px;
+  top: 70px;
+  width: 400px;
+  height: calc(100vh - 70px);
+  background: #f8fafc;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.chat-panel.active {
+  right: 0;
+}
+
+.chat-panel-header {
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.chat-panel-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.chat-suggestions {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.suggestion-btn {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.suggestion-btn:hover {
+  background: #0059ff;
+  color: white;
+  border-color: #0059ff;
+  transform: translateX(4px);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-message {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  animation: fadeIn 0.3s ease;
+}
+
+.chat-message.user {
+  background: #0059ff;
+  color: white;
+  margin-left: auto;
+  max-width: 80%;
+}
+
+.chat-message.assistant {
+  background: white;
+  color: #1a1a1a;
+  margin-right: auto;
+  max-width: 80%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-input-container {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 8px;
+  background: white;
+}
+
+.chat-input {
+  flex: 1;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.chat-input:focus {
+  border-color: #0059ff;
+}
+
+.chat-send-btn {
+  background: #0059ff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.chat-send-btn:hover {
+  background: #0046cc;
+  transform: scale(1.05);
+}
+
+.chat-send-btn:active {
+  transform: scale(0.95);
+}
+
 /* Hamburger Menu */
 .hamburger {
   display: none;
@@ -145,12 +337,7 @@ body {
   align-items: end;
 }
 
-.hero-left {
-  /* Left column styling - inherits from existing hero styles */
-}
-
 .hero-right {
-  /* Right column styling - inherits from existing hero styles */
   max-width: 500px;
 }
 
@@ -608,6 +795,21 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .chat-toggle {
+    display: none;
+  }
+
+  .chat-panel {
+    width: 100%;
+    right: -100%;
+    top: 60px;
+    height: calc(100vh - 60px);
+  }
+
+  .chat-panel.active {
+    right: 0;
+  }
+
   .nav-container {
     padding: 0 1rem;
     height: 60px;
