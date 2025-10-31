@@ -55,9 +55,9 @@ function sendMessage(message) {
   
   // Send to API - try multiple endpoints
   const apiEndpoints = [
-    '/api/chat',  // Vercel production
     'http://localhost:3000/api/chat',  // Local development
-    'https://api.eugene.portfolio/api/chat'  // Custom domain
+    '/api/chat',  // Vercel production
+    'https://kimeugene.com'  // Vercel domain
   ];
   
   let fetchAttempts = 0;
@@ -82,12 +82,14 @@ function sendMessage(message) {
       body: JSON.stringify({ message: message })
     })
     .then(response => {
+      console.log(`Response from ${endpoint}:`, response.status, response.statusText);
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
       return response.json();
     })
     .then(data => {
+      console.log('Response data:', data);
       // Remove loading message
       loadingMessage.remove();
       
@@ -96,6 +98,9 @@ function sendMessage(message) {
       } else if (data.error) {
         addMessageToUI('Sorry, I encountered an error: ' + data.error, 'assistant');
         console.error('Chat error:', data.error);
+      } else {
+        console.error('Unexpected response format:', data);
+        addMessageToUI('Unexpected response from server', 'assistant');
       }
       
       // Re-enable input and button
@@ -104,7 +109,8 @@ function sendMessage(message) {
       chatInput.focus();
     })
     .catch(error => {
-      console.error(`Fetch failed for ${endpoint}:`, error);
+      console.error(`Fetch failed for ${endpoint}:`, error.message);
+      console.error('Full error:', error);
       fetchAttempts++;
       tryFetch();
     });
@@ -137,6 +143,12 @@ chatInput.addEventListener('keypress', (e) => {
     e.preventDefault();
     sendMessage(chatInput.value);
   }
+});
+
+// Toggle active state when typing
+chatInput.addEventListener('input', () => {
+  const container = chatInput.closest('.chat-input-container');
+  container.classList.toggle('has-input', chatInput.value.trim().length > 0);
 });
 
 // Handle send button click
