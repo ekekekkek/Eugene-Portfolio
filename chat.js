@@ -57,7 +57,7 @@ function sendMessage(message) {
   const apiEndpoints = [
     'http://localhost:3000/api/chat',  // Local development
     '/api/chat',  // Vercel production
-    'https://eugene-portfolio-gamma.vercel.app/api/chat'  // Vercel domain
+    'https://kimeugene.com'  // Vercel domain
   ];
   
   let fetchAttempts = 0;
@@ -143,6 +143,12 @@ chatInput.addEventListener('keypress', (e) => {
     e.preventDefault();
     sendMessage(chatInput.value);
   }
+});
+
+// Toggle active state when typing
+chatInput.addEventListener('input', () => {
+  const container = chatInput.closest('.chat-input-container');
+  container.classList.toggle('has-input', chatInput.value.trim().length > 0);
 });
 
 // Handle send button click
