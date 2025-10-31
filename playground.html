@@ -31,6 +31,10 @@
           <a href="assets/Resume.pdf" target="_blank" class="nav-link">Resume</a>
         </li>
       </ul>
+      <div class="chat-toggle">
+        <img src="assets/Eugene favicon.png" class="chat-icon" alt="Chat">
+        <span class="chat-close-icon">×</span>
+      </div>
       <div class="hamburger">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -38,6 +42,27 @@
       </div>
     </div>
   </nav>
+
+  <!-- Chat Panel -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <h3>Hey, what would you like to know?</h3>
+    </div>
+    <div class="chat-suggestions">
+      <button class="suggestion-btn">What projects has Eugene worked on?</button>
+      <button class="suggestion-btn">What does Eugene do for fun?</button>
+      <button class="suggestion-btn">Fun facts about Eugene?</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input-container">
+      <input type="text" class="chat-input" placeholder="Ask about me..." id="chatInput">
+      <button class="chat-send-btn" id="chatSendBtn">
+        <svg width="13" height="13" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 3L10 17M10 3L3 10M10 3L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
 
   <!-- Playground Section -->
   <section class="section">
@@ -88,5 +113,6 @@
   </section>
 
   <script src="script.js"></script>
+  <script src="chat.js"></script>
 </body>
 </html> 
