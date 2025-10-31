@@ -46,6 +46,17 @@
   <!-- Chat Panel -->
   <div class="chat-panel">
     <div class="chat-panel-header">
+      <h4>EugeneAI</h4>
+      <button class="chat-info-icon" id="chatInfoIcon" aria-label="Info about EugeneAI">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 16V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="8" r="1" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-panel-intro">
       <h3>Hey, what would you like to know?</h3>
     </div>
     <div class="chat-suggestions">
@@ -53,7 +64,6 @@
       <button class="suggestion-btn">What does Eugene do for fun?</button>
       <button class="suggestion-btn">Fun facts about Eugene?</button>
     </div>
-    <div class="chat-messages" id="chatMessages"></div>
     <div class="chat-input-container">
       <input type="text" class="chat-input" placeholder="Ask about me..." id="chatInput">
       <button class="chat-send-btn" id="chatSendBtn">

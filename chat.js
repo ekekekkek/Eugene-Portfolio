@@ -5,19 +5,56 @@ const chatInput = document.getElementById('chatInput');
 const chatSendBtn = document.getElementById('chatSendBtn');
 const chatMessages = document.getElementById('chatMessages');
 const suggestionButtons = document.querySelectorAll('.suggestion-btn');
+const chatInfoIcon = document.getElementById('chatInfoIcon');
+
+// Handle info icon click - show tooltip
+if (chatInfoIcon) {
+  // Create tooltip element
+  const tooltip = document.createElement('div');
+  tooltip.className = 'chat-info-tooltip';
+  tooltip.innerHTML = `
+    <div class="chat-info-tooltip-content">
+      <p>I'm a chatbot that can ask questions about Eugene. I apologize for the limited depth of knowledge as a representation of Eugene. Your responses will be logged for research and development purposes :)</p>
+    </div>
+  `;
+  document.querySelector('.chat-panel-header').appendChild(tooltip);
+  
+  // Handle info icon click
+  chatInfoIcon.addEventListener('click', (e) => {
+    e.stopPropagation();
+    tooltip.classList.toggle('visible');
+  });
+  
+  // Close tooltip when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!tooltip.contains(e.target) && !chatInfoIcon.contains(e.target)) {
+      tooltip.classList.remove('visible');
+    }
+  });
+}
 
 // Toggle chat panel
 chatToggle.addEventListener('click', (e) => {
-  // Check if we're clicking the close icon specifically when panel is open
-  const isCloseIcon = e.target.classList.contains('chat-close-icon');
-  const isActive = chatToggle.classList.contains('active');
+  // Check if clicking the close icon (handle text node case)
+  const clickedElement = e.target.nodeType === Node.TEXT_NODE ? e.target.parentElement : e.target;
+  const isCloseIcon = clickedElement.classList.contains('chat-close-icon') || 
+                      clickedElement.closest('.chat-close-icon') ||
+                      e.target.closest('.chat-close-icon');
   
-  if (isCloseIcon && isActive) {
-    // Just close
-    chatToggle.classList.remove('active');
-    chatPanel.classList.remove('active');
-  } else if (!isActive) {
-    // Open
+  if (isCloseIcon) {
+    // Handle close - prevent default and stop propagation
+    e.preventDefault();
+    e.stopPropagation();
+    if (chatToggle.classList.contains('active')) {
+      chatToggle.classList.remove('active');
+      chatPanel.classList.remove('active');
+    }
+    return;
+  }
+  
+  // Handle open
+  const isActive = chatToggle.classList.contains('active');
+  if (!isActive) {
     chatToggle.classList.add('active');
     chatPanel.classList.add('active');
     
@@ -43,8 +80,10 @@ function sendMessage(message) {
   // Add user message to UI
   addMessageToUI(message, 'user');
   
-  // Clear input
+  // Clear input and reset styling
   chatInput.value = '';
+  const container = chatInput.closest('.chat-input-container');
+  container.classList.remove('has-input');
   
   // Disable input and button while processing
   chatInput.disabled = true;
@@ -129,9 +168,16 @@ function addMessageToUI(message, type) {
   // Scroll to bottom
   chatMessages.scrollTop = chatMessages.scrollHeight;
   
-  // Hide suggestions after first message
-  if (chatMessages.children.length > 1) {
-    document.querySelector('.chat-suggestions').style.display = 'none';
+  // Hide intro and suggestions after first message
+  if (chatMessages.children.length > 0) {
+    const chatPanelIntro = document.querySelector('.chat-panel-intro');
+    const chatSuggestions = document.querySelector('.chat-suggestions');
+    if (chatPanelIntro) {
+      chatPanelIntro.style.display = 'none';
+    }
+    if (chatSuggestions) {
+      chatSuggestions.style.display = 'none';
+    }
   }
   
   return messageDiv;
