@@ -55,9 +55,9 @@ function sendMessage(message) {
   
   // Send to API - try multiple endpoints
   const apiEndpoints = [
-    'http://localhost:3000/api/chat',  // Local development
-    '/api/chat',  // Vercel production
-    'https://kimeugene.com'  // Vercel domain
+    '/api/chat',  // Vercel production (relative path)
+    'https://kimeugene.com/api/chat',  // Full domain (fallback)
+    'http://localhost:3000/api/chat',  // Local development (only if running locally)
   ];
   
   let fetchAttempts = 0;
