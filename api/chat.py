@@ -3,7 +3,12 @@ from starlette.responses import JSONResponse, PlainTextResponse
 from starlette.requests import Request
 from starlette.middleware.cors import CORSMiddleware
 import os
+import uuid
+from datetime import datetime
 from groq import Groq
+from db import (
+    init_db, store_conversation, hash_ip, extract_device_type
+)
 
 app = Starlette()
 app.add_middleware(
@@ -16,6 +21,9 @@ app.add_middleware(
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 MODEL = "llama-3.1-8b-instant"
 groq_client = Groq(api_key=GROQ_API_KEY) if GROQ_API_KEY else None
+
+# Initialize database on startup
+init_db()
 
 @app.route("/", methods=["GET"])
 async def health(_: Request):
@@ -39,6 +47,20 @@ async def chat(req: Request):
             return JSONResponse({"error": "No message provided"})
         if not GROQ_API_KEY:
             return JSONResponse({"error": "GROQ_API_KEY not configured"})
+
+        # Get request metadata for storage
+        client_ip = req.client.host if req.client else "unknown"
+        user_agent = req.headers.get("user-agent", "unknown")
+        referrer = req.headers.get("referer", "unknown")
+        language = req.headers.get("accept-language", "unknown").split(",")[0] if req.headers.get("accept-language") else "unknown"
+        
+        # Get or create session and conversation IDs from headers
+        session_id = req.headers.get("x-session-id") or str(uuid.uuid4())
+        conversation_id = req.headers.get("x-conversation-id") or str(uuid.uuid4())
+        
+        # Track timing for response metrics
+        start_time = datetime.utcnow()
+        user_message_id = str(uuid.uuid4())
 
         system_prompt = (
             """
@@ -113,7 +135,51 @@ async def chat(req: Request):
         )
         choice = (completion.choices or [None])[0]
         content = getattr(getattr(choice, "message", None), "content", "")
-        return JSONResponse({"response": content or "No response from AI"})
+        
+        # Calculate response time
+        end_time = datetime.utcnow()
+        response_time_ms = int((end_time - start_time).total_seconds() * 1000)
+        
+        # Get token usage if available
+        tokens_used = None
+        if hasattr(completion, 'usage') and completion.usage:
+            tokens_used = completion.usage.total_tokens
+        
+        # Store conversation in database (non-blocking - if it fails, still return response)
+        try:
+            assistant_message_id = str(uuid.uuid4())
+            store_conversation(
+                conversation_id=conversation_id,
+                session_id=session_id,
+                user_message={
+                    "message_id": user_message_id,
+                    "content": msg,
+                    "timestamp": start_time.isoformat()
+                },
+                assistant_message={
+                    "message_id": assistant_message_id,
+                    "content": content or "No response from AI",
+                    "timestamp": end_time.isoformat(),
+                    "model_used": MODEL,
+                    "tokens_used": tokens_used,
+                    "response_time_ms": response_time_ms
+                },
+                metadata={
+                    "user_agent": user_agent,
+                    "ip_hash": hash_ip(client_ip),
+                    "referrer": referrer,
+                    "device_type": extract_device_type(user_agent),
+                    "language": language
+                }
+            )
+        except Exception as storage_error:
+            print(f"Error storing conversation (non-fatal): {storage_error}")
+        
+        return JSONResponse({
+            "response": content or "No response from AI",
+            "session_id": session_id,
+            "conversation_id": conversation_id
+        })
     except Exception as e:
         print("Chat crash:", repr(e))
         return JSONResponse({"error": "Internal error"})
