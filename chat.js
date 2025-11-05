@@ -7,25 +7,6 @@ const chatMessages = document.getElementById('chatMessages');
 const suggestionButtons = document.querySelectorAll('.suggestion-btn');
 const chatInfoIcon = document.getElementById('chatInfoIcon');
 
-// Generate UUID for session and conversation tracking
-function generateUUID() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    const r = Math.random() * 16 | 0;
-    const v = c === 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
-// Initialize session ID (persists across page reloads)
-let sessionId = sessionStorage.getItem('chatSessionId');
-if (!sessionId) {
-  sessionId = generateUUID();
-  sessionStorage.setItem('chatSessionId', sessionId);
-}
-
-// Initialize conversation ID (resets when chat is closed)
-let conversationId = sessionStorage.getItem('chatConversationId') || generateUUID();
-
 // Handle info icon click - show tooltip
 if (chatInfoIcon) {
   // Create tooltip element
@@ -67,9 +48,6 @@ chatToggle.addEventListener('click', (e) => {
     if (chatToggle.classList.contains('active')) {
       chatToggle.classList.remove('active');
       chatPanel.classList.remove('active');
-      // Reset conversation ID when chat is closed (new conversation on next open)
-      conversationId = generateUUID();
-      sessionStorage.removeItem('chatConversationId');
     }
     return;
   }
@@ -79,14 +57,6 @@ chatToggle.addEventListener('click', (e) => {
   if (!isActive) {
     chatToggle.classList.add('active');
     chatPanel.classList.add('active');
-    
-    // Start new conversation if one doesn't exist
-    if (!sessionStorage.getItem('chatConversationId')) {
-      conversationId = generateUUID();
-      sessionStorage.setItem('chatConversationId', conversationId);
-    } else {
-      conversationId = sessionStorage.getItem('chatConversationId');
-    }
     
     // Focus on input when opening
     setTimeout(() => {
@@ -147,8 +117,6 @@ function sendMessage(message) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Session-Id': sessionId,
-        'X-Conversation-Id': conversationId
       },
       body: JSON.stringify({ message: message })
     })
@@ -163,16 +131,6 @@ function sendMessage(message) {
       console.log('Response data:', data);
       // Remove loading message
       loadingMessage.remove();
-      
-      // Update conversation ID from server response if provided
-      if (data.conversation_id) {
-        conversationId = data.conversation_id;
-        sessionStorage.setItem('chatConversationId', conversationId);
-      }
-      if (data.session_id) {
-        sessionId = data.session_id;
-        sessionStorage.setItem('chatSessionId', sessionId);
-      }
       
       if (data.response) {
         addMessageToUI(data.response, 'assistant');
