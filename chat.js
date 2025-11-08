@@ -162,7 +162,7 @@ function sendMessage(message) {
 function addMessageToUI(message, type) {
   const messageDiv = document.createElement('div');
   messageDiv.className = `chat-message ${type}`;
-  messageDiv.textContent = message;
+  messageDiv.innerHTML = message;
   chatMessages.appendChild(messageDiv);
   
   // Scroll to bottom
@@ -204,4 +204,222 @@ chatSendBtn.addEventListener('click', () => {
 
 // Smooth scroll for chat messages
 chatMessages.style.scrollBehavior = 'smooth';
+
+// Handle close panel button (mobile)
+const chatClosePanel = document.getElementById('chatClosePanel');
+if (chatClosePanel) {
+  // Show close button on mobile when panel is active
+  const checkMobileCloseButton = () => {
+    if (window.innerWidth <= 768 && chatPanel.classList.contains('active')) {
+      chatClosePanel.style.display = 'flex';
+    } else {
+      chatClosePanel.style.display = 'none';
+    }
+  };
+
+  // Check on resize
+  window.addEventListener('resize', checkMobileCloseButton);
+
+  // Check when panel state changes
+  const panelObserver = new MutationObserver(() => {
+    checkMobileCloseButton();
+  });
+  if (chatPanel) {
+    panelObserver.observe(chatPanel, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  // Handle close button click
+  chatClosePanel.addEventListener('click', () => {
+    chatPanel.classList.remove('active');
+    chatPanel.classList.remove('expanded');
+    if (chatToggle) {
+      chatToggle.classList.remove('active');
+    }
+  });
+
+  // Initial check
+  checkMobileCloseButton();
+}
+
+// Mobile Chatbot Functionality (Notion AI Style)
+const mobileChatToggle = document.getElementById('mobileChatToggle');
+const mobileChatInput = document.getElementById('mobileChatInput');
+const mobileChatSend = document.getElementById('mobileChatSend');
+const mobileChatToggleWrapper = document.querySelector('.mobile-chat-toggle-wrapper');
+
+// Only initialize if mobile elements exist (mobile viewport)
+if (mobileChatToggle && mobileChatInput && mobileChatSend) {
+  let isPanelExpanded = false;
+
+  // Handle mobile toggle click - activate input mode
+  mobileChatToggle.addEventListener('click', (e) => {
+    // Don't activate if clicking the send button
+    if (e.target.closest('.mobile-chat-send')) {
+      return;
+    }
+    
+    // Activate input mode
+    if (!mobileChatToggle.classList.contains('active')) {
+      mobileChatToggle.classList.add('active');
+      setTimeout(() => {
+        mobileChatInput.focus();
+      }, 100);
+    }
+  });
+
+  // Handle mobile input focus - ensure active state
+  mobileChatInput.addEventListener('focus', () => {
+    mobileChatToggle.classList.add('active');
+  });
+
+  // Handle mobile input blur - keep active if there's text
+  mobileChatInput.addEventListener('blur', () => {
+    if (!mobileChatInput.value.trim() && !isPanelExpanded) {
+      // Hide input/send first to prevent layout shift
+      mobileChatInput.style.opacity = '0';
+      mobileChatSend.style.opacity = '0';
+      // Small delay to let opacity transition start, then remove active class
+      setTimeout(() => {
+        mobileChatToggle.classList.remove('active');
+        // Reset opacity after transition
+        setTimeout(() => {
+          mobileChatInput.style.opacity = '';
+          mobileChatSend.style.opacity = '';
+        }, 300);
+      }, 50);
+    }
+  });
+
+  // Handle mobile send button click
+  mobileChatSend.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const message = mobileChatInput.value.trim();
+    if (message) {
+      handleMobileSend(message);
+    }
+  });
+
+  // Handle Enter key in mobile input
+  mobileChatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      const message = mobileChatInput.value.trim();
+      if (message) {
+        handleMobileSend(message);
+      }
+    }
+  });
+
+  // Function to handle sending message from mobile
+  function handleMobileSend(message) {
+    // Expand panel if not already expanded
+    if (!isPanelExpanded) {
+      chatPanel.classList.add('active');
+      chatPanel.classList.add('expanded');
+      isPanelExpanded = true;
+      if (mobileChatToggleWrapper) {
+        mobileChatToggleWrapper.style.display = 'none';
+      }
+    }
+
+    // Sync with desktop input
+    chatInput.value = message;
+    
+    // Send message using existing function
+    sendMessage(message);
+    
+    // Clear mobile input but keep it active
+    mobileChatInput.value = '';
+    
+    // Focus back on mobile input after panel expands
+    setTimeout(() => {
+      mobileChatInput.focus();
+    }, 400);
+  }
+
+  // Store original sendMessage
+  const originalSendMessage = sendMessage;
+  
+  // Override sendMessage to handle mobile panel expansion
+  window.sendMessage = function(message) {
+    if (!message.trim()) return;
+
+    // Expand panel on first message if on mobile
+    if (!isPanelExpanded && window.innerWidth <= 768) {
+      chatPanel.classList.add('active');
+      chatPanel.classList.add('expanded');
+      isPanelExpanded = true;
+      if (mobileChatToggleWrapper) {
+        mobileChatToggleWrapper.style.display = 'none';
+      }
+    }
+
+    // Call original sendMessage
+    originalSendMessage(message);
+    
+    // Clear mobile input
+    if (mobileChatInput) {
+      mobileChatInput.value = '';
+    }
+  };
+
+  // Handle closing the panel - reset mobile state
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        const panel = mutation.target;
+        if (!panel.classList.contains('active') && !panel.classList.contains('expanded')) {
+          isPanelExpanded = false;
+          mobileChatToggle.classList.remove('active');
+          if (mobileChatInput) {
+            mobileChatInput.value = '';
+          }
+          if (mobileChatToggleWrapper) {
+            mobileChatToggleWrapper.style.display = 'block';
+          }
+        } else if (panel.classList.contains('active') && panel.classList.contains('expanded')) {
+          isPanelExpanded = true;
+          if (mobileChatToggleWrapper) {
+            mobileChatToggleWrapper.style.display = 'none';
+          }
+        }
+      }
+    });
+  });
+
+  if (chatPanel) {
+    observer.observe(chatPanel, { attributes: true });
+  }
+
+  // Sync desktop input with mobile input when panel is expanded
+  if (chatInput) {
+    chatInput.addEventListener('input', () => {
+      if (isPanelExpanded && mobileChatInput) {
+        mobileChatInput.value = chatInput.value;
+      }
+    });
+  }
+
+  // Close panel when clicking outside (for mobile)
+  document.addEventListener('click', (e) => {
+    if (isPanelExpanded && 
+        !chatPanel.contains(e.target) && 
+        !mobileChatToggle.contains(e.target) &&
+        window.innerWidth <= 768) {
+      // Don't close if clicking on the mobile toggle wrapper area
+      if (!mobileChatToggleWrapper || !mobileChatToggleWrapper.contains(e.target)) {
+        chatPanel.classList.remove('active');
+        chatPanel.classList.remove('expanded');
+        isPanelExpanded = false;
+        mobileChatToggle.classList.remove('active');
+        if (mobileChatInput) {
+          mobileChatInput.value = '';
+        }
+        if (mobileChatToggleWrapper) {
+          mobileChatToggleWrapper.style.display = 'block';
+        }
+      }
+    }
+  });
+}
 
