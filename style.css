@@ -1327,17 +1327,17 @@ html {
 }
 
 @media (max-width: 480px) {
-  /* Chat panel - full width and 85% height for small mobile */
+  /* Chat panel - full width and smaller height for small mobile */
   .chat-panel {
     left: 0;
     width: 100%;
-    height: 85vh;
-    max-height: 85vh;
+    height: 65vh;
+    max-height: 65vh;
   }
 
   .chat-panel.expanded {
-    height: 85vh;
-    max-height: 85vh;
+    height: 65vh;
+    max-height: 65vh;
   }
 
   .nav-container {
