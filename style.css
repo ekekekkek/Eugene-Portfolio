@@ -426,6 +426,10 @@ body {
   }
 }
 
+.chat-input-form {
+  display: contents;
+}
+
 .chat-input-container {
   padding: 16px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -1002,6 +1006,10 @@ html {
   display: none;
 }
 
+.mobile-chat-form {
+  display: contents;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .chat-toggle {
@@ -1031,7 +1039,7 @@ html {
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1), max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
   }
 
@@ -1076,29 +1084,52 @@ html {
   }
 
   .mobile-chat-toggle.active .mobile-chat-send {
-    display: flex;
-    opacity: 1;
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    background: rgba(0, 89, 255, 0.1);
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    background: rgba(255, 255, 255, 0.05);
     border: none;
     border-radius: 50%;
     cursor: pointer;
     margin-left: 8px;
     flex-shrink: 0;
     transition: all 0.2s ease;
+    position: relative;
+    z-index: 100;
+    pointer-events: auto;
   }
 
   .mobile-chat-toggle.active .mobile-chat-send:hover {
-    background: rgba(0, 89, 255, 0.2);
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-chat-toggle.active .mobile-chat-send:active {
+    transform: scale(0.95);
   }
 
   .mobile-chat-toggle.active .mobile-chat-send svg {
-    width: 16px;
-    height: 16px;
+    width: 13px;
+    height: 13px;
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  /* Blue state when there's input */
+  .mobile-chat-toggle.active.has-input .mobile-chat-send {
+    background: rgba(128, 179, 255, 0.2);
+  }
+
+  .mobile-chat-toggle.active.has-input .mobile-chat-send svg {
     color: #0059ff;
+  }
+
+  .mobile-chat-toggle.active.has-input .mobile-chat-send:hover {
+    background: rgba(128, 179, 255, 0.3);
   }
 
   .mobile-chat-input {
@@ -1110,7 +1141,8 @@ html {
   .mobile-chat-send {
     display: none;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
   }
 
   /* Expanded panel state */

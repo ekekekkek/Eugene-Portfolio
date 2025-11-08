@@ -197,8 +197,18 @@ chatInput.addEventListener('input', () => {
   container.classList.toggle('has-input', chatInput.value.trim().length > 0);
 });
 
+// Handle chat form submission (for "done" button on mobile keyboards)
+const chatInputForm = document.getElementById('chatInputForm');
+if (chatInputForm) {
+  chatInputForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    sendMessage(chatInput.value);
+  });
+}
+
 // Handle send button click
-chatSendBtn.addEventListener('click', () => {
+chatSendBtn.addEventListener('click', (e) => {
+  e.preventDefault();
   sendMessage(chatInput.value);
 });
 
@@ -245,6 +255,7 @@ if (chatClosePanel) {
 const mobileChatToggle = document.getElementById('mobileChatToggle');
 const mobileChatInput = document.getElementById('mobileChatInput');
 const mobileChatSend = document.getElementById('mobileChatSend');
+const mobileChatForm = document.getElementById('mobileChatForm');
 const mobileChatToggleWrapper = document.querySelector('.mobile-chat-toggle-wrapper');
 
 // Only initialize if mobile elements exist (mobile viewport)
@@ -256,6 +267,11 @@ if (mobileChatToggle && mobileChatInput && mobileChatSend) {
     // Don't activate if clicking the send button
     if (e.target.closest('.mobile-chat-send')) {
       return;
+    }
+    
+    // Prevent form submission if form exists
+    if (mobileChatForm && e.target === mobileChatToggle) {
+      e.preventDefault();
     }
     
     // Activate input mode
@@ -289,6 +305,27 @@ if (mobileChatToggle && mobileChatInput && mobileChatSend) {
       }, 50);
     }
   });
+
+  // Toggle has-input class based on input value (for arrow color)
+  mobileChatInput.addEventListener('input', () => {
+    if (mobileChatInput.value.trim().length > 0) {
+      mobileChatToggle.classList.add('has-input');
+    } else {
+      mobileChatToggle.classList.remove('has-input');
+    }
+  });
+
+  // Handle mobile form submission (for "done" button on mobile keyboards)
+  if (mobileChatForm) {
+    mobileChatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const message = mobileChatInput.value.trim();
+      if (message) {
+        handleMobileSend(message);
+      }
+    });
+  }
 
   // Handle mobile send button click
   mobileChatSend.addEventListener('click', (e) => {
@@ -330,6 +367,7 @@ if (mobileChatToggle && mobileChatInput && mobileChatSend) {
     
     // Clear mobile input but keep it active
     mobileChatInput.value = '';
+    mobileChatToggle.classList.remove('has-input');
     
     // Focus back on mobile input after panel expands
     setTimeout(() => {
@@ -360,6 +398,9 @@ if (mobileChatToggle && mobileChatInput && mobileChatSend) {
     // Clear mobile input
     if (mobileChatInput) {
       mobileChatInput.value = '';
+      if (mobileChatToggle) {
+        mobileChatToggle.classList.remove('has-input');
+      }
     }
   };
 
