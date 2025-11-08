@@ -448,6 +448,14 @@ body {
   background-color: white;
 }
 
+/* Prevent mobile zoom on input focus - ensure minimum 16px font-size on mobile */
+@media (max-width: 768px) {
+  .chat-input,
+  .mobile-chat-input {
+    font-size: 16px !important; /* Minimum 16px to prevent mobile zoom on focus */
+  }
+}
+
 .chat-input-container.has-input .chat-input {
   border-color: #80b3ff;
   background-color: white;
@@ -1077,7 +1085,7 @@ html {
     border: none;
     outline: none;
     background: transparent;
-    font-size: 0.9rem;
+    font-size: 16px; /* Minimum 16px to prevent mobile zoom on focus */
     color: #1a1a1a;
     margin-left: 12px;
     padding: 0;
