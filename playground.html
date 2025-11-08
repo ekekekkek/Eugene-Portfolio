@@ -71,27 +71,31 @@
       <button class="suggestion-btn">What does Eugene do for fun?</button>
       <button class="suggestion-btn">Fun facts about Eugene?</button>
     </div>
-    <div class="chat-input-container">
-      <input type="text" class="chat-input" placeholder="Ask about me..." id="chatInput">
-      <button class="chat-send-btn" id="chatSendBtn">
-        <svg width="13" height="13" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 3L10 17M10 3L3 10M10 3L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
+    <form class="chat-input-form" id="chatInputForm">
+      <div class="chat-input-container">
+        <input type="text" class="chat-input" placeholder="Ask about me..." id="chatInput">
+        <button type="submit" class="chat-send-btn" id="chatSendBtn">
+          <svg width="13" height="13" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 3L10 17M10 3L3 10M10 3L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </form>
   </div>
 
   <!-- Mobile Chat Toggle (Notion AI Style) -->
   <div class="mobile-chat-toggle-wrapper">
-    <button class="mobile-chat-toggle" id="mobileChatToggle">
-      <img src="assets/Eugene favicon.png" class="chat-icon" alt="Chat">
-      <input type="text" class="mobile-chat-input" id="mobileChatInput" placeholder="Ask about me...">
-      <button class="mobile-chat-send" id="mobileChatSend">
-        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 3L10 17M10 3L3 10M10 3L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </button>
+    <form class="mobile-chat-form" id="mobileChatForm">
+      <div class="mobile-chat-toggle" id="mobileChatToggle">
+        <img src="assets/Eugene favicon.png" class="chat-icon" alt="Chat">
+        <input type="text" class="mobile-chat-input" id="mobileChatInput" placeholder="Ask about me...">
+        <button type="submit" class="mobile-chat-send" id="mobileChatSend">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 3L10 17M10 3L3 10M10 3L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </form>
   </div>
 
   <!-- Playground Section -->
